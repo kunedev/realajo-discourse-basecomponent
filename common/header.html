@@ -114,9 +114,18 @@ learn about loadscript
 <!------------------------  END OF MAKING KUNE DIVS AVAILABLE TO JS          --------------------------------->
 
 
+
 <!--  SCRIPT MANAGING DYNAMIC CONTENT   -->
 
 <script type="text/discourse-plugin" version="0.1">
+
+
+// TEST / IMPORTING & USING JS FUNCTIONS .. WILL THIS WORK? 
+import * as kUtilFunctions from "../javascripts/discourse/widgets/k-utilfunctions.js.es6";
+
+let x = kUtilFunctions.myFunction(4, 3);   // Function is called, return value will end up in x
+alert("x = " + x);    // yes this works 
+
 
 const siteSettings = Discourse.SiteSettings,
     taggingEnabled = siteSettings.tagging_enabled,
