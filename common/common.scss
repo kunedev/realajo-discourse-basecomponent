@@ -4,40 +4,40 @@
  
 /* limit max logo sizes*/
 .category-logo.aspect-image{
-  --max-height: 60px;
+  --max-height: 60px !important;
 }   
 
 .category-logo.aspect-image img {
-  max-width: 250px;
+  max-width: 250px !important;
 }
 
 /* custom styling for the Category List widget (left hand category nav option) */
 
 .layouts-category-list ul li.layouts-category-link .category-logo {
-  width: 1px;
-  min-width: 0px;
-  visibility: hidden;
+  width: 1px !important;
+  min-width: 0px !important;
+  visibility: hidden !important;
 }
 
 .layouts-category-list ul li.layouts-category-link{
- min-height: 15px;
+ min-height: 15px !important;
 }
 
 .layouts-category-list ul li.layouts-category-link{
-  padding-left: 3px;
-  padding-right: 10px;
+  padding-left: 3px !important;
+  padding-right: 10px !important;
 }
 
 .layouts-category-list ul.parent-categories ul.child-categories.grandchildren{
-  background-color: #b9abab;
+  background-color: #b9abab !important;
 }
 
 .layouts-category-list ul.parent-categories ul.child-categories{
-background-color: #e1d1d1;	
+background-color: #e1d1d1 !important;	
 }
 
 .layouts-category-list{
-  background: #ebf3f3;
+  background: #ebf3f3 !important;
 }
 
 /* other custom-layout changes (left and right) */
@@ -55,14 +55,14 @@ background-color: #e1d1d1;
 
 
 .topic-title-custom-field-container{      /* hide the custom field */ 
-    display: none;
+    display: none !important;
 }
 .topic-custom-field-textarea{      /* hide the custom field ... mmm .. must remove it from plugin once finished */ 
-    display: none;
+    display: none !important;
 }
 
 .category-custom-field-onscreen{      /* hide the custom field */ 
-    display: none;
+    display: none !important;
 }
 
 #ksidebardiv{ 
