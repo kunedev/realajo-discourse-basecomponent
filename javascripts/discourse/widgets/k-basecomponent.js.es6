@@ -6,7 +6,7 @@ let layouts;
 
 try {
   
-  alert("Hello! I am an alert box called from within the Widget js file!!");
+  alert("Evidently, I can run any JS I need here.");
 
 } catch(error) {
 
