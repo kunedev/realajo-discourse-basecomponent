@@ -1,7 +1,6 @@
 
-// <script type="text/discourse-plugin" version="0.1">     --    commenting script tags out as  prob not needed 
+ <script type="text/discourse-plugin" version="0.1">   
 
-  // you can use the `api` object here!
   api.decorateCooked($elem => $elem.css({ backgroundColor: 'yellow' }));
   
   api.onPageChange((url, title) => { 
@@ -147,6 +146,5 @@
   })
 
 
-//   </script>  opposite end of "commenting out"
-
+ </script>   // opposite end of "commenting out"
 
