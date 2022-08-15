@@ -2,8 +2,33 @@
 /* THESE ARE JUST DEMO CHANGES TO SHOW THAT CSS IS PICKED UP */
 
 .topic-title-custom-field-container{      /* hide the custom field */ 
-    display: inline !important;
+    display: none;
 }
 .topic-custom-field-textarea{      /* hide the custom field ... mmm .. must remove it from plugin once finished */ 
-    display: inline !important;
+    display: none;
 }
+
+.category-custom-field-onscreen{      /* hide the custom field */ 
+    display: none;
+}
+
+.layouts-custom-html{
+    background: #cde7da !important;
+}
+
+#ksidebardiv{ 
+    
+}
+
+.toggle-sidebar .svg-string.d-icon-plus{   /* emphasize the + to expand the Custom Sidebar when hidden */ 
+    color:rgb(28, 83, 3) !important;
+}
+
+.category-logo.aspect-image{
+    --max-height: 70px;
+}   
+
+.category-logo.aspect-image img {
+    max-width: 300px;
+}
+ 
