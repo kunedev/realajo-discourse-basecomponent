@@ -13,3 +13,6 @@ try {
   console.error(error);
 
 }
+
+let y = myFunction(4, 3);   // Function is called, return value will end up in x
+alert("y = " + y);
