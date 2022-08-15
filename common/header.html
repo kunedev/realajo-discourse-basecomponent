@@ -121,13 +121,15 @@ learn about loadscript
 const settings = Discourse.SiteSettings,
     taggingEnabled = settings.tagging_enabled,
     title = settings.title;
-
+    kcommunity = settings.kcommunity;
+    
   if (taggingEnabled) {
     console.log("Yay! "+title+" has tagging enabled!")
   } else {
     console.log("Ohh nooos! "+title+"Does not allow tagging.")
   }
 
+  console.log("kcommunity : " + kcommunity);
 
     api.decorateCooked($elem => $elem.css({ backgroundColor: 'yellow' }));
     
