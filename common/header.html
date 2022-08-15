@@ -146,37 +146,31 @@ learn about loadscript
 </script>
 
 <!-- end of custom fields -->
+
 <!------------------------  END OF MAKING KUNE DIVS AVAILABLE TO JS          --------------------------------->
-
-
 
 
 <!--  SCRIPT MANAGING DYNAMIC CONTENT   -->
 
 <script type="text/discourse-plugin" version="0.1">
 
+  //  console.log(this);        // kept, as reference / reminder. 
 
-// TEST / IMPORTING & USING JS FUNCTIONS .. WILL THIS WORK? 
+  /*        // all this is working 
 
-const kUtilFunctions = require('../javascripts/utils.js');
-
-const siteSettings = Discourse.SiteSettings,
+  const siteSettings = Discourse.SiteSettings,
     taggingEnabled = siteSettings.tagging_enabled,
     title = siteSettings.title;
 
-    const kCommunity = settings.kcommunity;
-
-    console.log(this);
-    
-  if (taggingEnabled) {
+  if (taggingEnabled) {     
     console.log("Yay! "+title+" has tagging enabled!")
   } else {
     console.log("Ohh nooos! "+title+"Does not allow tagging.")
   }
+  */ 
 
+  const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
   console.log("kcommunity : " + kCommunity);
-
-  console.log(api.h('b', ['hello', 'world']));
    
    // api.decorateCooked($elem => $elem.css({ backgroundColor: 'yellow' }));       // retained for demo value only
     
