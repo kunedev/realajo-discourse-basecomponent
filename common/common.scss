@@ -20,8 +20,12 @@
 }
 
 #ksidebardiv{ 
-    
+  color: red !important;
 }
+
+.share-and-invite.btn{
+  color: green !important;
+} 
 
 .toggle-sidebar .svg-string.d-icon-plus{   /* emphasize the + to expand the Custom Sidebar when hidden */ 
     color: red !important;
