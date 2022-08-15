@@ -1,4 +1,8 @@
-All code in this repository is Copyright 2020 by Angus McLeod.
+
+This component is (c) 2022 Kune Network Ltd.
+ 
+The file structure reflects Discourse software and is derived from original work Copyright 2020 by Angus McLeod. 
+(see https://github.com/paviliondev/layouts-custom-html)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

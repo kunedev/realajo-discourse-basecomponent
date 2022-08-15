@@ -1,5 +1,29 @@
-layouts_custom_html:
+kcommunity:
+  default: ''
+  textarea: false
+  description:
+    en: "Community code, allowing us to identify the relevant community"
+
+
+kJSON:
   default: ''
   textarea: true
   description:
-    en: "Html for custom html widget"
+    en: "Config JSON (demo)"
+
+kmapurl:
+  default: ''
+  textarea: false
+  description:
+    en: "Linkage to map file for menus (demo setting)"
+
+kbooldemo:
+  default: true
+  description:
+    en: "demo boolean"
+
+kintegerdemo:
+  default: 101
+  description:
+    en: "demo integer"
+
