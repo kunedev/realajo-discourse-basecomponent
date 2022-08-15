@@ -6,7 +6,7 @@ let layouts;
 
 try {
   
-  alert("Usefully, these functions are also available.");
+ // alert("Usefully, these functions are also available.");   // yes this works 
 
 } catch(error) {
 
@@ -16,7 +16,7 @@ try {
 }
 
 let x = myFunction(4, 3);   // Function is called, return value will end up in x
-alert("x = " + x);
+//alert("x = " + x);    // yes this works 
 
 function myFunction(a, b) {
   return a * b;             // Function returns the product of a and b
