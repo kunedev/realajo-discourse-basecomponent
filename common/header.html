@@ -118,10 +118,11 @@ learn about loadscript
 
 <script type="text/discourse-plugin" version="0.1">
 
-const settings = Discourse.SiteSettings,
-    taggingEnabled = settings.tagging_enabled,
-    title = settings.title,
-    kCommunity = settings.kcommunity;
+const siteSettings = Discourse.SiteSettings,
+    taggingEnabled = siteSettings.tagging_enabled,
+    title = siteSettings.title;
+
+kCommunity = settings.kcommunity;
 
     console.log(this);
     
