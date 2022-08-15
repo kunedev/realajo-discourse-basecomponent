@@ -4,7 +4,7 @@
  
 /* limit max logo sizes*/
 .category-logo.aspect-image{
-  --max-height: 60px !important;
+  max-height: 60px  !important;
 }   
 
 .category-logo.aspect-image img {
