@@ -134,7 +134,9 @@ const siteSettings = Discourse.SiteSettings,
 
   console.log("kcommunity : " + kCommunity);
 
-    api.decorateCooked($elem => $elem.css({ backgroundColor: 'yellow' }));
+  console.log(api.h('b', ['hello', 'world']));
+   
+   // api.decorateCooked($elem => $elem.css({ backgroundColor: 'yellow' }));       // retained for demo value only
     
     api.onPageChange((url, title) => { 
       console.log('user navigated! ' + url);
