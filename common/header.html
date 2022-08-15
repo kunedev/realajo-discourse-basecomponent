@@ -121,9 +121,10 @@ learn about loadscript
 
 
 // TEST / IMPORTING & USING JS FUNCTIONS .. WILL THIS WORK? 
-//import * as kUtilFunctions from "../javascripts/discourse/widgets/k-utilfunctions.js.es6";
 
-let y = myFunction(4, 3);   // Function is called, return value will end up in x
+const kUtilFunctions = require('../javascripts/utils.js');
+
+let y = kUtilFunctions.myFunction(4, 3);   // Function is called, return value will end up in x
 alert("y = " + y);    // yes this works 
 
 
