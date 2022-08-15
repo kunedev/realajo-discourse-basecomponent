@@ -1,5 +1,3 @@
-
-
 <!------------------------  THIS BLOCK MAKES KUNE DIVS AVAILABLE TO JS          --------------------------------->
 
 <!-- 
@@ -9,7 +7,7 @@ https://meta.discourse.org/t/using-the-pluginapi-in-site-customizations/41281 >
 https://regex101.com/r/rOHmo8/1
 https://meta.discourse.org/t/a-tour-of-how-the-widget-virtual-dom-code-in-discourse-works/40347
 learn about loadscript 
---> 
+-->
 
 
 <!-- global custom fields -->
@@ -116,10 +114,20 @@ learn about loadscript
 <!------------------------  END OF MAKING KUNE DIVS AVAILABLE TO JS          --------------------------------->
 
 
-
 <!--  SCRIPT MANAGING DYNAMIC CONTENT   -->
 
-<script type="text/discourse-plugin" version="0.1">   
+<script type="text/discourse-plugin" version="0.1">
+
+const settings = Discourse.SiteSettings,
+    taggingEnabled = settings.tagging_enabled,
+    title = settings.title;
+
+  if (taggingEnabled) {
+    console.log("Yay! "+title+" has tagging enabled!")
+  } else {
+    console.log("Ohh nooos! "+title+"Does not allow tagging.")
+  }
+
 
     api.decorateCooked($elem => $elem.css({ backgroundColor: 'yellow' }));
     
@@ -264,5 +272,4 @@ learn about loadscript
     })
   
   
-   </script>   // opposite end of "commenting out"
-  
+   </script> // opposite end of "commenting out"
