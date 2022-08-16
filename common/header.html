@@ -2,14 +2,22 @@
 
 <script>
 	 alert ("Hello world!");	 // test of vanilla inline script
+	 const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
+
+	 // maybe we could write these settings into the DOM so that JS could then load them? 
+
 </script>
+
 
 <script type="text/discourse-plugin" version="0.1">
 
-	const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
+
 	console.log("kcommunity : " + kCommunity);
 	 
 </script>
+
+
+
 
 <script>
 	alert ("kcommunity : " + kCommunity);		 // test of variable set within text/discourse-plugin script
