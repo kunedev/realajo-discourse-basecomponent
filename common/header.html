@@ -1,26 +1,28 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
-<script>
-	 alert ("Hello world!");	 // test of vanilla inline script
-	 const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
-
-	 // maybe we could write these settings into the DOM so that JS could then load them? 
-
-</script>
+<div id="kSettings"></div>
 
 
-<script type="text/discourse-plugin" version="0.1">
+<script type="text/discourse-plugin" version="0.1">	// poc only
 
-
+	const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
 	console.log("kcommunity : " + kCommunity);
 	 
+	var kSettingsDiv = document.getElementById('kSettings');		// here we're just reading Discourse settings into the DOM
+	kSettingsDiv.innerHTML = "kcommunity : " + kCommunity;
+
 </script>
 
 
+<script>		// poc only
 
+	var kSettingsDivReader = document.getElementById('kSettings');		
+	alert (kSettingsDivReader.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
+
+</script>
 
 <script>
-	alert ("kcommunity : " + kCommunity);		 // test of variable set within text/discourse-plugin script
+	alert (kSettingsDivReader.innerHTML + " version 2 - continuation script");		 // test of variable set within text/discourse-plugin script
 </script>
 
 
