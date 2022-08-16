@@ -2,7 +2,12 @@
 
 /* TODO:  REFACTOR THIS ENTIRE THING .. ALSO SHARE CSS BETWEEN SITES VIA STANDARD CSS FILES AS MUCH AS POSSIBLE */
 
- 
+/* background colour for post content*/
+.onscreen-post .row{
+  background-color: #e9f0ec !important;
+}
+
+
 /* limit max logo sizes*/
 .category-logo.aspect-image{
     max-height: 60px  !important;
