@@ -1,5 +1,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
+
+<!--   PROOF OF CONCEPT OF 
+							A) READING SETTINGS THAT ARE SET VIA HEADER ON MAIN THEME   
+							B) ASSIGNING THIS TO 2 VARIABLES, IN i) JS and ii) DISCOURSE/TEXT THEN
+							C) REUSING THOSE VARIABLES LATER IN JS, AND DISCOUSE/TEXT, RESPECTIVELY 				--> 
+
 <script>		// poc only
 	var kSettingsDivReader = document.getElementById('kSettings');		
 	alert (kSettingsDivReader.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
@@ -7,19 +13,27 @@
 
 </script>
 
-
 <script type="text/discourse-plugin" version="0.1">	// poc only
 
-	const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
-	console.log("kcommunity : " + kCommunity);
+	//const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings, as defined via Theme Component Properties.  May be needed. 
 
-	// todo:  can we read the DOM InnerHTML from here? 
+	var kSettingsVirturalDom = document.getElementById('kSettings');		
+	alert (kSettingsVirturalDom.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
+	const kCommunityDisc = kSettingsVirturalDom.innerHTML;       // demo of how to retrieve custom settings. 
 
 </script>
+
 
 <script>
-	alert (kCommunityJS + "   - continuation script");		 // test of variable set within text/discourse-plugin script
+	alert (kCommunityJS + "   - continuation script (JS) .. this proves the COMMONJS variable remains set");		 // this proves that the JS variable remains available 
 </script>
+
+
+<script type="text/discourse-plugin" version="0.1">	// poc only
+	alert (kCommunityDisc + "   - continuation script (DISCOURSE) .. this proves the TEXT/DISCOURSE variable remains set");		 // this proves that the JS variable remains available 
+</script>
+
+<!--   END OF PROOF OF CONCEPT REF SETTINGS ETC  --> 
 
 
 <!-- Font awesome -->
