@@ -1,5 +1,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
+<script>
+	 alert ("Hello world!");	 // test of vanilla inline script
+</script>
+
+<script type="text/discourse-plugin" version="0.1">
+
+	const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
+	console.log("kcommunity : " + kCommunity);
+	 
+</script>
+
+<script>
+	alert ("kcommunity : " + kCommunity);		 // test of variable set within text/discourse-plugin script
+</script>
+
+
 <!-- Font awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
