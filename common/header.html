@@ -8,22 +8,20 @@
 
 	<script>		// poc only
 		var kSettingsDivReader = document.getElementById('kSettings');		
-		console.log (kSettingsDivReader.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
-		const kCommunityJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
+		const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
 
-	</script>
-
-	<script type="text/discourse-plugin" version="0.1">	// poc only
-		//const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings, as defined via Theme Component Properties.  May be needed. 
-	</script>
-
-	<script>
-		console.log (kCommunityJS + "   - continuation script (JS) .. this proves the COMMONJS variable remains set");		 // this proves that the JS variable remains available 
+		const kSettingsJSON = JSON.parse(kSettingsJS);
+		console.log("Community Ref: " + kSettingsJSON.CommunityRef);
+		console.log("OtherSettingsArray[2].name : " + kSettingsJSON.OtherSettingArray[2].name);
+		
 	</script>
 
 	<script type="text/discourse-plugin" version="0.1">	// poc only
 		console.log (kCommunityJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
+		console.log("Community EntityID (from text/discourse): " + kSettingsJSON.EntityID);
+
 	</script>
+
 
 <!--   END OF PROOF OF CONCEPT REF SETTINGS ETC  --> 
 
