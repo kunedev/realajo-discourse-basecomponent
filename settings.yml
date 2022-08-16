@@ -2,28 +2,4 @@ kcommunity:
   default: ''
   textarea: false
   description:
-    en: "Community code, allowing us to identify the relevant community"
-
-
-kJSON:
-  default: ''
-  textarea: true
-  description:
-    en: "Config JSON (demo)"
-
-kmapurl:
-  default: ''
-  textarea: false
-  description:
-    en: "Linkage to map file for menus (demo setting)"
-
-kbooldemo:
-  default: true
-  description:
-    en: "demo boolean"
-
-kintegerdemo:
-  default: 101
-  description:
-    en: "demo integer"
-
+    en: "Maintained only as an illustration. Switching to using JSON in the Header Div, instead."
