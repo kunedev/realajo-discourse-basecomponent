@@ -8,7 +8,7 @@
 
 	<script>		// poc only
 		var kSettingsDivReader = document.getElementById('kSettings');		
-		alert (kSettingsDivReader.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
+		console.log (kSettingsDivReader.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
 		const kCommunityJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
 
 	</script>
@@ -18,11 +18,11 @@
 	</script>
 
 	<script>
-		alert (kCommunityJS + "   - continuation script (JS) .. this proves the COMMONJS variable remains set");		 // this proves that the JS variable remains available 
+		console.log (kCommunityJS + "   - continuation script (JS) .. this proves the COMMONJS variable remains set");		 // this proves that the JS variable remains available 
 	</script>
 
 	<script type="text/discourse-plugin" version="0.1">	// poc only
-		alert (kCommunityJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
+		console.log (kCommunityJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
 	</script>
 
 <!--   END OF PROOF OF CONCEPT REF SETTINGS ETC  --> 
