@@ -1,28 +1,24 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
-<div id="kSettings" style="background-color: white;"></div>
+<script>		// poc only
+	var kSettingsDivReader = document.getElementById('kSettings');		
+	alert (kSettingsDivReader.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
+	const kCommunityJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
+
+</script>
 
 
 <script type="text/discourse-plugin" version="0.1">	// poc only
 
 	const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
 	console.log("kcommunity : " + kCommunity);
-	 
-	var kSettingsDiv = document.getElementById('kSettings');		// here we're just reading Discourse settings into the DOM
-	kSettingsDiv.innerHTML = "kcommunity : " + kCommunity;
 
-</script>
-
-
-<script>		// poc only
-
-	var kSettingsDivReader = document.getElementById('kSettings');		
-	alert (kSettingsDivReader.innerHTML);	 //  and here we're reading the Discourse Settings from the DOM into Javascript, further down the page. To be extracted to js file.
+	// todo:  can we read the DOM InnerHTML from here? 
 
 </script>
 
 <script>
-	alert (kSettingsDivReader.innerHTML + " version 2 - continuation script");		 // test of variable set within text/discourse-plugin script
+	alert (kCommunityJS + "   - continuation script");		 // test of variable set within text/discourse-plugin script
 </script>
 
 
