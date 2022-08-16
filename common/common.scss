@@ -1,370 +1,272 @@
 
+/* import the cookie-content standard css.  (later, move at least a backup of this to empowercdn) */       
+@import url("https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"); 
 
-/* TODO:  REFACTOR THIS ENTIRE THING .. ALSO SHARE CSS BETWEEN SITES VIA STANDARD CSS FILES AS MUCH AS POSSIBLE */
+/* import the standard megamenu css */       
+@import url("https://kune.co/wp-content/themes/kuneco-flexible/menu-m0025.css"); 
 
-
-/* CHANGES TO POSTS */
-/* background colour for post content*/
-.topic-body{
-  background-color: #e9f0ec !important;
-}
-.username{
-  text-decoration: underline !important;
-}
-.post-menu-area{
-margin: 10px !important;
-padding: 3px !important;
-background-color: ghostwhite !important;
-}
-/*  end of changes to posts */
+/* temp classes for test leaflet map */       
+img.leaflet-marker-icon { filter:hue-rotate(250deg) }
 
 
-/* limit max logo sizes*/
-.category-logo.aspect-image{
-    max-height: 60px  !important;
-  }   
-  
-  .category-logo.aspect-image img {
-    max-width: 250px !important;
+/* adjustments for micro-menu at top of page */
+
+  html:not(.anon) #login_link{
+    display: none;
   }
   
-  /* custom styling for the Category List widget (left hand category nav option) */
-  
-  .layouts-category-list ul li.layouts-category-link .category-logo {
-    width: 1px !important;
-    min-width: 0px !important;
-    visibility: hidden !important;
+  .login-button{
+    display: none;
   }
-  
-  .layouts-category-list ul li.layouts-category-link{
-   min-height: 15px !important;
-  }
-  
-  .layouts-category-list ul li.layouts-category-link{
-    padding-left: 3px !important;
-    padding-right: 10px !important;
-  }
-  
-  .layouts-category-list ul.parent-categories ul.child-categories.grandchildren{
-    background-color: #b9abab !important;
-  }
-  
-  .layouts-category-list ul.parent-categories ul.child-categories{
-  background-color: #e1d1d1 !important;	
-  }
-  
-  .layouts-category-list{
-    background: #ebf3f3 !important;
-  }
-  
-  /* other custom-layout changes (left and right) */
-  
-  .toggle-sidebar .svg-string.d-icon-plus{   /* emphasize the + to expand the Custom Sidebar (left + right) when hidden */ 
-    color:red !important;
-  }
-  
-  .layouts-custom-html{       /* right-hand-side Custom HTM */
-    background: #cde7da !important;
-  }
-  
-  
-  /* end of styling for the Category List widget (left hand category nav option) */
-  
-  
-  .topic-title-custom-field-container{      /* hide the custom field */ 
-      display: none !important;
-  }
-  .topic-custom-field-textarea{      /* hide the custom field ... mmm .. must remove it from plugin once finished */ 
-      display: none !important;
-  }
-  
-  .category-custom-field-onscreen{      /* hide the custom field */ 
-      display: none !important;
-  }
-  
-  #ksidebardiv{ 
-    color: red !important;
-  }
-  
-  .share-and-invite.btn{
-    color: red;
-    background-color: rgb(192, 235, 192) ;
+
+
+  #login_link{
+	font-size: 13px;
+    background-color: LightGreen;
+    border-width: thin;
     font-weight: bold;
-  } 
-  
-  
-  
-  
-  /* import the cookie-content standard css.  (later, move at least a backup of this to empowercdn) */       
-  @import url("https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"); 
-  
-  /* import the standard megamenu css */       
-  @import url("https://kune.co/wp-content/themes/kuneco-flexible/menu-m0025.css"); 
-  
-  /* temp classes for test leaflet map */       
-  img.leaflet-marker-icon { filter:hue-rotate(250deg) }
-  
-  
-  /* adjustments for micro-menu at top of page */
-  
-    html:not(.anon) #login_link{
-      display: none;
-    }
+    border-color: lightgray;
+    margin-right: 5px;
     
-    .login-button{
-      display: none;
-    }
+  }
   
-  
-    #login_link{
-      font-size: 13px;
-      background-color: LightGreen;
-      border-width: thin;
-      font-weight: bold;
-      border-color: lightgray;
-      margin-right: 5px;
-      
-    }
+   	#main-outlet{
+	padding-top: 1em;
+   	}
+	
+	.topbartext{
+	margin-right: -1px;
+	text-align: right; 
+	font-size: 12px;
+	color: var(--primary);
+    margin-bottom: 1.6em !important;
+	}
+
+
+	a.zzsectortext{
+	text-decoration: underline;
+	}
+	
+	.sectortext{
+	color: black!important;
+	font-size: 11px;
+	font-style: italic;
+	}
+
+/* tweaks to layout within posts */
+
+blockquote{
+padding: 0px 10px 10px 10px;    /* reduce top padding within a block */
+}
+
+hr{
+border-top: 1px solid #52855e;
+padding-top: 5px;
+}
+
+/* auto-maintained links area at bottom of topics ..this won't take effect until I add a custom field and allow that css class  */
+.smartlinks{
+    border-top: #52855e;
+    border-top-width: thin;
+    border-top-style: dashed;
+    font-size: smaller;
+    padding-top: 5px;
+}
+
+/* adjustments to get menu tabs (non-fomantic) working better .. later, move these to menu-m0025.css */
+
+.menu_ktab{
+	border-color: darkslategray;
+	border: 1px;
+}
+
+.sub-menu{
+padding: 10px 0 0px 0 !important;
+}
+ 
+.menu_ktab button.active:hover, .menu_ktab button.active, .menu_ktab button:hover{
+font-size: 14px!important;
+font-weight: 500 !important;
+font-family: inherit !important;
+padding: 12px 12px;
+}
+
+.menu_ktab button{
     
-         #main-outlet{
-      padding-top: 1em;
-         }
-      
-      .topbartext{
-      margin-right: -1px;
-      text-align: right; 
-      font-size: 12px;
-      color: var(--primary);
-      margin-bottom: 1.6em !important;
-      }
-  
-  
-      a.zzsectortext{
-      text-decoration: underline;
-      }
-      
-      .sectortext{
-      color: black!important;
-      font-size: 11px;
-      font-style: italic;
-      }
-  
-  /* tweaks to layout within posts */
-  
-  blockquote{
-  padding: 0px 10px 10px 10px;    /* reduce top padding within a block */
+padding: 10px 10px;
+font-size: 14px!important;
+font-weight: 500 !important;
+font-family: inherit !important;
+}
+
+/* ------ */
+
+
+.category-logo {
+max-width: 35% !important;
+}
+
+.category-heading p{
+font-size: var(--font-up-1) !important; 
+}
+ 
+.select-kit .select-kit-row .category-desc{     /* hide category description in dropdown */ 
+display: none;
+}
+
+#inourcaremap {
+width: 450px;
+height: 550px;
+margin-left:30px;
+}
+ 
+/* making "visited" items less invisible. */ 
+.topic-list-item.visited .topic-list-data a.title:not(.badge-notification), .latest-topic-list-item.visited a.title:not(.badge-notification), .category-topic-link.visited a.title:not(.badge-notification){ 
+color: #3e2c2c !important;
+}
+
+/* hide the page response times. */ 
+.profiler-results{ 
+display: none;
+}
+
+#3e2c2c
+
+/* testing around styling for FomanticUI stuff */       
+.ui .content {
+padding: 0px !important;
+}
+
+.categories-list .category .category-description    /* hide display of category description in lists .. not in page itself */     
+{ 
+display: none;
+}
+
+#topmenubar{
+    background-color: black;  
+    height:50px;
+    display: flex !important;
+}
+
+
+/* mmenu Kune word at top left */
+#topleftkune{
+    width: 90px;
+    height: 36px;
+    margin-top: 4px;
+}
+    
+#global-notice-alert-bootstrap-mode {
+    display: none;
+  }
+
+.create-topics-notice {
+    display: none;
+  }
+
+.category-list .category-logo.aspect-image{
+    max-width: 300px;
+    display:none;
   }
   
-  hr{
-  border-top: 1px solid #52855e;
-  padding-top: 5px;
+#skip-link{
+    display: none;
+  }
+
+#mm-0{
+    background-color: black;
+    min-height: 0 !important;
+    z-index: 1001 !important;
+  }
+
+.mm-page {
+    background-color: black;
+    min-height: 0 !important;
   }
   
-  /* auto-maintained links area at bottom of topics ..this won't take effect until I add a custom field and allow that css class  */
-  .smartlinks{
-      border-top: #52855e;
-      border-top-width: thin;
-      border-top-style: dashed;
-      font-size: smaller;
-      padding-top: 5px;
+
+  .d-header-wrap {
+    z-index: 1;
   }
   
-  /* adjustments to get menu tabs (non-fomantic) working better .. later, move these to menu-m0025.css */
-  
-  .menu_ktab{
-      border-color: darkslategray;
-      border: 1px;
-  }
-  
-  .sub-menu{
-  padding: 10px 0 0px 0 !important;
+  .sub-menu {
+    background-color: lightgrey!important;
+    z-index: 2 !important;
+}
+
+.sub-menu-container {
+    padding: 15px;
+    padding-top: 0px !important;
+    box-sizing: border-box;
+}    
+
+.navbar-nav > li > a {
+    font-family: Arial, sans-serif;
+    font-size: var(--font-down-1) !important;
+    line-height: normal;
+    height: 40px;
+    padding-right: 10px !important;
+}
+
+#kune-menu-list{
+    margin-top: 0px; 
+    padding-top: 8px !important;
   }
    
-  .menu_ktab button.active:hover, .menu_ktab button.active, .menu_ktab button:hover{
-  font-size: 14px!important;
-  font-weight: 500 !important;
-  font-family: inherit !important;
-  padding: 12px 12px;
-  }
-  
-  .menu_ktab button{
-      
-  padding: 10px 10px;
-  font-size: 14px!important;
-  font-weight: 500 !important;
-  font-family: inherit !important;
-  }
-  
-  /* ------ */
-  
-  
-  .category-logo {
-  max-width: 35% !important;
-  }
-  
-  .category-heading p{
-  font-size: var(--font-up-1) !important; 
-  }
-   
-  .select-kit .select-kit-row .category-desc{     /* hide category description in dropdown */ 
-  display: none;
-  }
-  
-  #inourcaremap {
-  width: 450px;
-  height: 550px;
-  margin-left:30px;
-  }
-   
-  /* making "visited" items less invisible. */ 
-  .topic-list-item.visited .topic-list-data a.title:not(.badge-notification), .latest-topic-list-item.visited a.title:not(.badge-notification), .category-topic-link.visited a.title:not(.badge-notification){ 
-  color: #3e2c2c !important;
-  }
-  
-  /* hide the page response times. */ 
-  .profiler-results{ 
-  display: none;
-  }
-  
-  #3e2c2c
-  
-  /* testing around styling for FomanticUI stuff */       
-  .ui .content {
-  padding: 0px !important;
-  }
-  
-  .categories-list .category .category-description    /* hide display of category description in lists .. not in page itself */     
-  { 
-  display: none;
-  }
-  
-  #topmenubar{
-      background-color: black;  
-      height:50px;
-      display: flex !important;
-  }
-  
-  
-  /* mmenu Kune word at top left */
-  #topleftkune{
-      width: 90px;
-      height: 36px;
-      margin-top: 4px;
-  }
-      
-  #global-notice-alert-bootstrap-mode {
-      display: none;
-    }
-  
-  .create-topics-notice {
-      display: none;
-    }
-  
-  .category-list .category-logo.aspect-image{
-      max-width: 300px;
-      display:none;
-    }
+.navbar-nav {
+    justify-content: flex-start !important;
+    margin-left:5px !important;
+    padding-top: 8px !important;
     
-  #skip-link{
-      display: none;
-    }
+}
+
+
+ 
+ .mm-menu{display:none}
+ @import url("https://empowercdn.com/cdn/shared/menus/mmenu-js-master/css/demo.css"); 
+ @import url("https://empowercdn.com/cdn/shared/menus/mmenu-js-master/css/mmenu.css"); 
+ .mm-menu{display:flex}
+ .top-menu .menu-item {
   
-  #mm-0{
-      background-color: black;
-      min-height: 0 !important;
-      z-index: 1001 !important;
-    }
-  
-  .mm-page {
-      background-color: black;
-      min-height: 0 !important;
-    }
+    padding: 0px !important;
     
-  
-    .d-header-wrap {
-      z-index: 1;
-    }
-    
-    .sub-menu {
-      background-color: lightgrey!important;
-      z-index: 2 !important;
-  }
-  
-  .sub-menu-container {
-      padding: 15px;
-      padding-top: 0px !important;
-      box-sizing: border-box;
-  }    
-  
-  .navbar-nav > li > a {
-      font-family: Arial, sans-serif;
-      font-size: var(--font-down-1) !important;
-      line-height: normal;
-      height: 40px;
-      padding-right: 10px !important;
-  }
-  
-  #kune-menu-list{
-      margin-top: 0px; 
-      padding-top: 8px !important;
-    }
-     
-  .navbar-nav {
-      justify-content: flex-start !important;
-      margin-left:5px !important;
-      padding-top: 8px !important;
-      
-  }
-  
-   .mm-menu{display:none}
-  
-   @import url("https://empowercdn.com/cdn/shared/menus/mmenu-js-master/css/demo.css"); 
-   @import url("https://empowercdn.com/cdn/shared/menus/mmenu-js-master/css/mmenu.css"); 
-   
-   .mm-menu{display:flex}
-   .top-menu .menu-item {
-    
-      padding: 0px !important;
-      
-   }
-   .top-menu .d-icon:not(.d-icon-caret-right) {
-       margin-right: 0px !important
-  }
-   .has-description .category-description{overflow: visible !important;}
-   .admin-controls nav{display:block !important}
-    .post-menu-area nav{display:flex !important}
-  
-  
-  /* reduce overall text size */
-   html  {
-     font-size: .875em;
-  }
-  
-  
-  /* reduce top-menu text size */
-   .top-menu  {
-     font-size: .738em;
-  }
-  
-  
-  /* reduce sidebar (widget) text size */
-   .sidebar-content  {
-     font-size: .800em;
-  }
-  
-  /* reduce TOC title text size */
-  .d-toc-regular .d-toc .d-toc-item  {
-     font-size: .838em;
-  }
-  
-  
-  /* reduce TOC max width where present */
-   .d-toc  {
-     max-width: 140px; 
-  }
-  .main-content.topic.left-sidebar :not(.rtl) .d-toc-post .d-toc-article>.d-toc {
-      max-width: 140px;
-  }
-  
-  
-  
+ }
+ .top-menu .d-icon:not(.d-icon-caret-right) {
+     margin-right: 0px !important
+}
+ .has-description .category-description{overflow: visible !important;}
+ .admin-controls nav{display:block !important}
+  .post-menu-area nav{display:flex !important}
+
+
+/* reduce overall text size */
+ html  {
+   font-size: .875em;
+}
+
+
+/* reduce top-menu text size */
+ .top-menu  {
+   font-size: .738em;
+}
+
+
+/* reduce sidebar (widget) text size */
+ .sidebar-content  {
+   font-size: .800em;
+}
+
+/* reduce TOC title text size */
+.d-toc-regular .d-toc .d-toc-item  {
+   font-size: .838em;
+}
+
+
+/* reduce TOC max width where present */
+ .d-toc  {
+   max-width: 140px; 
+}
+.main-content.topic.left-sidebar :not(.rtl) .d-toc-post .d-toc-article>.d-toc {
+    max-width: 140px;
+}
+
