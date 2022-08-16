@@ -2,10 +2,21 @@
 
 /* TODO:  REFACTOR THIS ENTIRE THING .. ALSO SHARE CSS BETWEEN SITES VIA STANDARD CSS FILES AS MUCH AS POSSIBLE */
 
+
+/* CHANGES TO POSTS */
 /* background colour for post content*/
 .topic-body{
   background-color: #e9f0ec !important;
 }
+.username{
+  text-decoration: underline !important;
+}
+.post-menu-area{
+margin: 10px !important;
+padding: 3px !important;
+background-color: ghostwhite !important;
+}
+/*  end of changes to posts */
 
 
 /* limit max logo sizes*/
