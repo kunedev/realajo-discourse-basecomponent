@@ -287,6 +287,8 @@ learn about loadscript
               var externalHTML = url + " :  Category id: " + thisCategoryID ;
               main.innerHTML = externalHTML;
         */
+
+            // TODO:  TIDY UP ALL THIS GUNK, ONCE I UNDERSTAND IT ALL WELL ENOUGH 
              
               if (kCustomSidebar !== null) {
                   kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
@@ -308,9 +310,8 @@ learn about loadscript
              console.log(currentUser);
              console.log(""); 
 
-             //  const settings = Discourse.SiteSettings,
-             console.log("categories");
-            const categories = Site.categories;
+/*          console.log("categories");                  // this code is all working, but the categoriesById approach is probably more efficient. 
+            const categories = Site.categories; 
             console.log(categories);
             console.log("");
 
@@ -323,6 +324,7 @@ learn about loadscript
             const categoryI = category;
             console.log(category.kcategoryinfo);
             console.log("");
+*/
 
             console.log("categoriesById");
             const categoriesById = Site.categoriesById;
@@ -330,7 +332,6 @@ learn about loadscript
             console.log("");
 
             console.log("thisCategory for Current Category ID ");
-        //    const thisCategory = categoriesById.thisCategoryID;
             const thisCategory = categoriesById[thisCategoryID]; 
             console.log(thisCategory);
             console.log("thisCategory CategoryInfo");
@@ -393,6 +394,14 @@ learn about loadscript
             var kCustomTopicField = document.getElementsByClassName('topic-title-custom-field-container')[0];
             var kTargetTopicField = document.getElementById('k-topic-above-suggested');
             kTargetTopicField.innerHTML = kCustomTopicField.innerHTML;  // test .. apply content of custom field to another text holder
+
+
+            // NEXT, GET CURRENT TOPIC INFO .. ESPECIALLY GET CATEGORYID AND KTOPICINFO FOR CURRENT TOPIC 
+
+
+
+
+
               
       } else if (blnIsGroup) {    // currently not being set as true at all 
               const main = document.getElementById('k-group-reports-nav-item');
