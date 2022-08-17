@@ -301,12 +301,13 @@ learn about loadscript
          //     console.log("Next, categories:");
               
          //     console.log(Discourse.site.categories);
-              
-              const settings = Discourse.SiteSettings,
-                    taggingEnabled = settings.tagging_enabled,
-                    title = settings.title;
 
-                if (taggingEnabled) {
+ 
+          //    const settings = Discourse.SiteSettings,
+          //          taggingEnabled = settings.tagging_enabled,
+          //          title = settings.title;
+
+                if (siteSettings.taggingEnabled) {
                     console.log("Yay! "+title+" has tagging enabled!")
                 } else {
                     console.log("Ohh nooos! "+title+"Does not allow tagging.")
