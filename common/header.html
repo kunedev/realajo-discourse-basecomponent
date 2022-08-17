@@ -18,7 +18,7 @@
 	</script>
 
 
-    <script src="https://empowercdn.com/js/utils/kgeneralutils.js?v=000001"></script>  <!--  testing / can we run functions from here? --> 
+    <script src="https://empowercdn.com/js/utils/kgeneralutils.js?v=000002"></script>  <!--  testing / can we run functions from here? --> 
 
 
 <!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
@@ -303,8 +303,7 @@
             $('#k-discovery-list-controls-above').html("");        // Set Div Content 
             
             //CHECK IF THIS WORKS: 
-            document.getElementById('TheButton').addEventListener('click', SayHello());     // TODO: A  FUNCTION THAT ATTACHES EVENTS TO BUTTONS (CLICK, MOUSEOVER ETC)
-            
+            MakeButtonWork();  // call function that is within external script
 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
