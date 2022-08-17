@@ -18,7 +18,6 @@
 		console.log("OtherSettingsArray[2].name : " + kSettingsJSON.OtherSettingArray[2].name);
 		
         function SayHello(){  alert("Hello   (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
-        const c1 = "variable set in js but displayed in discourse";
 
 	</script>
 
@@ -162,21 +161,32 @@
 <!------------------------  END OF MAKING KUNE DIVS AVAILABLE TO JS          --------------------------------->
 
 
-<!--  SCRIPT MANAGING DYNAMIC CONTENT   -->
+<!------------------------  TODO:  ADDITIONAL JS FUNCTIONALITY FOR OUTER PAGE (JS, NOT DISCOURSE)           --------------------------------->
+
+
+
+
+<!------------------------  END OF ADDITIONAL JS FUNCTIONALITY FOR OUTER PAGE (JS, NOT DISCOURSE)          --------------------------------->
+
+
+
+
+<!--  SCRIPT MANAGING DYNAMIC CONTENT  WITHIN DISCOURSE  (USING DISCOURSE SCRIPT)  -->
 
 <script type="text/discourse-plugin" version="0.8.7">
 
         // console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));   // TODO: WORK OUT WHETHER THIS H FUNCTION HELPS ME? 
  
         function SayHello2(){  alert("Hello 2  (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
-        const c2 = "variable set in Discourse script .. the JS one seems to be broken, now.  It may be to do with API versions.";
 
-        SayHello2();
+        var kSettingsDivReaderDS = document.getElementById('kSettings');		
+		const kSettingsDS = kSettingsDivReaderDS.innerHTML;       // demo of how to retrieve custom settings. 
 
-        console.log(c2);
+		const kSettingsDs = JSON.parse(kSettingsDS);    // Kune Settings in JSON format, read within Discourse script 
+		console.log("Community Ref: " + kSettingsDs.CommunityRef);
+		console.log("OtherSettingsArray[2].name : " + kSettingsDs.OtherSettingArray[2].name);
 
-        console.log (kSettingsJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
-        console.log("Community EntityID (from text/discourse): " + kSettingsJSON.EntityID);
+        console.log("Community EntityID (from text/discourse): " + kSettingsDs.EntityID);
         
         console.log("");                            // TODO: CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT IF SO
         console.log("siteSettings:");
