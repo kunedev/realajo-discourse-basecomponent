@@ -184,6 +184,24 @@ learn about loadscript
 
     console.log(api.h('b', ['hello', 'world']));
 
+    console.log("categoriesById:");     // make this easily available 
+    const categoriesById = Site.categoriesById;
+    console.log(categoriesById);
+    console.log("");
+
+    console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. THIS (ON PAGE LOAD) SEEMS MORE AKIN TO WHAT I KNOW OF DISCOURSE. 
+    console.log("siteSettings");
+    const siteSettings = api.container.lookup("site-settings:main");
+    console.log(siteSettings);
+    console.log("");
+    console.log("Site");
+    const Site = api.container.lookup("service:site");
+    console.log(Site);
+    console.log("");
+    console.log("currentUser");
+    const currentUser =  api.getCurrentUser();
+    console.log(currentUser);
+    console.log(""); 
 
   //  console.log(this);        // kept, as reference / reminder. 
 
@@ -302,20 +320,6 @@ learn about loadscript
 
              console.log("category " + thisCategoryID);    
 
-             console.log("");
-             console.log("siteSettings");
-             const siteSettings = api.container.lookup("site-settings:main");
-             console.log(siteSettings);
-             console.log("");
-             console.log("Site");
-             const Site = api.container.lookup("service:site");
-             console.log(Site);
-             console.log("");
-             console.log("currentUser");
-             const currentUser =  api.getCurrentUser();
-             console.log(currentUser);
-             console.log(""); 
-
 /*          console.log("categories");                  // this code is all working, but the categoriesById approach is probably more efficient. 
             const categories = Site.categories; 
             console.log(categories);
@@ -331,11 +335,6 @@ learn about loadscript
             console.log(category.kcategoryinfo);
             console.log("");
 */
-
-            console.log("categoriesById");
-            const categoriesById = Site.categoriesById;
-            console.log(categoriesById);
-            console.log("");
 
             console.log("thisCategory for Current Category ID ");
             const thisCategory = categoriesById[thisCategoryID]; 
@@ -404,41 +403,45 @@ learn about loadscript
 
             // NEXT, GET CURRENT TOPIC INFO .. ESPECIALLY GET CATEGORYID AND KTOPICINFO FOR CURRENT TOPIC 
 
+                 // NOTE HOW EASY THE $.getJSON FUNCTION IS TO CALL .. LOOKS LIKE A GREAT WAY TO BUILD MY AJAX FUNCTIONS 
+
+            /*      THIS WORKS BUT IT REQUIRES AN EXTRA CALL, I THINK 
             $.getJSON(window.location.href + '.json', function (data) {         // good that it's async. 
                 const pagejson = data;
                 const topicCategoryId = pagejson.category_id;
 
                 console.log(topicCategoryId);
-                
                 });
+            */
 
 
             // CAN I GET THAT VALUE USING EMBER (AVOID A CALL, AND USE APP BETTER)
 
-            /*  this didn't work at all.. 
-                        var topicView = require('discourse/views/topic').default;
-                            api.topicView.reopen({
-                                afterRenderEvent : function(){
-                                        //console.dir(this);  //Use this to to get a good overview of what's available
-                                        console.dir(this);
-                                        console.log("Category ID: " + this._controller.model.category.id + " - Category Name: "  + this._controller.model.category.name);
-                                    }
-                            })
-            */
-
             const topicController = api.container.lookup("controller:topic");
             
             if (topicController) {
-                const topic = topicController.get("model");
-                if (topic) {
-                    console.log(topic);
-                    console.log(topic.category.id);
-                    console.log(topic.category.name);
+                const thisTopic = topicController.get("model");
+                if (thisTopic) {
+
+                    console.log("Category Info for Current Topic");
+                    console.log(thisTopic);
+                    console.log(thisTopic.category.id);
+                    console.log(thisTopic.category.name);
+
+                    console.log("Lookup/Indepth Category Info for Current Topic ");
+                    const thisTopicCategory = categoriesById[topic.category.id]; 
+                    console.log(thisTopicCategory);
+                    console.log("thisTopicCategory kcategoryinfo");
+                    const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
+                    console.log(thisTopicCategoryKInfo);
+                    console.log("");
+
+
+
+
                 }
             }
 
-
-              
       } else if (blnIsGroup) {    // currently not being set as true at all 
               const main = document.getElementById('k-group-reports-nav-item');
               main.innerHTML = thisGroupName;
