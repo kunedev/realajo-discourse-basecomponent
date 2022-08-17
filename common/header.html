@@ -204,9 +204,15 @@
         const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings, ie as defined in the Theme Head Section.
         console.log("kcommunity : " + kCommunity);
         
+            /* STANDARD DISCOURSE SETTINGS .. MAINTAINED FOR REFERENCE ONLY 
+            const taggingEnabled = siteSettings.tagging_enabled,     
+            title = siteSettings.title;
+            */
 
-   //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
+            //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
    
+    
+    /* ----------------  NEXT - CRITICAL SECTION .. THIS RUNS EVERY TIME WE NAVIGATE FROM PAGE TO PAGE WITHIN DISCOURSE     ------------ */
 
     api.onPageChange((url, title) => {      // this runs dynamically every time we switch page wihtin Discourse. 
 
@@ -276,9 +282,7 @@
       }
   
       // ---------- end of other pagetype checks  ------------
-  
-      var kCustomSidebar = document.getElementById('ksidebardiv');  // div for the right hand sidebar.  May not need this variable because we're using jquery. 
-        
+          
       if (blnIsCategory) {
           
              console.log("category " + thisCategoryID);    
@@ -291,10 +295,6 @@
             console.log(thisCategoryKInfo);
             console.log("");
 
-            /* STANDARD DISCOURSE SETTINGS .. MAINTAINED FOR REFERENCE ONLY 
-            const taggingEnabled = siteSettings.tagging_enabled,     
-            title = siteSettings.title;
-            */
                 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
@@ -305,14 +305,9 @@
             // reset other shared fields also 
             // no need to reset where they are set by a subsequent line below 
 
-            var main = document.getElementById('k-discovery-list-controls-above');
-            var externalHTML = url + " Homepage type: " + strHomepageView ;
-            main.innerHTML = externalHTML;
-            
-            if (kCustomSidebar !== null) {
-                kCustomSidebar.innerHTML = externalHTML;
-            }
-              
+            $('#k-discovery-list-controls-above').html( url + " Homepage type: " + strHomepageView);        // Set Div Content 
+                          
+
       } else if (blnIsTopic) {
            
             // prove that we can access & use the Custom Topic field. 
@@ -358,8 +353,8 @@
                     console.log("next, set the sidebar");
  
                      // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
-                     $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
-                    $('#k-after-topic-footer-buttons').html('Seeing if this works also?<br>' + thisTopicKInfo);      // write html into that div 
+                    $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
+                    $('#k-after-topic-footer-buttons').html('(Setting this also)<br>' + thisTopicKInfo);      // write html into that div 
                     
                 }
             }
