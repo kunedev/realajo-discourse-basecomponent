@@ -411,9 +411,19 @@ learn about loadscript
                 
                 });
 
-
-
             // CAN I GET THAT VALUE USING EMBER (AVOID A CALL, AND USE APP BETTER)
+
+            var topicView = require('discourse/views/topic').default;
+            topicView.reopen({
+
+                afterRenderEvent : function(){
+                        //console.dir(this);  //Use this to to get a good overview of what's available
+                        console.dir(this);
+                        console.log("Category ID: " + this._controller.model.category.id + " - Category Name: "  + this._controller.model.category.name);
+                        
+                    }
+                })
+
 
 
               
