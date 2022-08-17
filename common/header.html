@@ -397,9 +397,9 @@ learn about loadscript
             const externalHTML = url + " :  Topic id: " + thisTopicID ;
             main.innerHTML = externalHTML;
             
-            if (kCustomSidebar !== null) {
-                kCustomSidebar.innerHTML = externalHTML;
-            }
+      //      if (kCustomSidebar !== null) {
+       //         kCustomSidebar.innerHTML = externalHTML;
+       //     }
             
             // prove that we can access & use the Custom Topic field. 
             var kCustomTopicField = document.getElementsByClassName('topic-title-custom-field-container')[0];
@@ -439,9 +439,9 @@ learn about loadscript
                     console.log("thisTopicCategory kcategoryinfo");
                     const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
                     console.log(thisTopicCategoryKInfo);
-                    console.log("");
-
-                    $('#k-topic-above-suggested').html('<b>Demo text</b><br>Test<br><b>Yahoooo</b>' + thisTopicCategoryKInfo);
+                    console.log("next, the sidebar");
+                    
+                    $('#ksidebardiv').html('<b>Demo text</b><br>Test<br><b>Yahoooo</b>');
 
 
                 }
