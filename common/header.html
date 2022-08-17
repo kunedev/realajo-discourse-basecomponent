@@ -180,7 +180,10 @@ learn about loadscript
 
 <!--  SCRIPT MANAGING DYNAMIC CONTENT   -->
 
-<script type="text/discourse-plugin" version="0.1">
+<script type="text/discourse-plugin" version="0.8.7">
+
+    console.log(api.h('b', ['hello', 'world']));
+
 
   //  console.log(this);        // kept, as reference / reminder. 
 
@@ -204,9 +207,6 @@ learn about loadscript
 
    //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // change to a variable 
    
-   const h = require("virtual-dom").h;
-
-
 
     api.onPageChange((url, title) => { 
       console.log('user navigated! ' + url);
@@ -299,7 +299,8 @@ learn about loadscript
                   kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
               }
 
-              console.log("category " + thisCategoryID);    
+
+             console.log("category " + thisCategoryID);    
 
              console.log("");
              console.log("siteSettings");
@@ -387,7 +388,7 @@ learn about loadscript
               
       } else if (blnIsTopic) {
            
-        const main = document.getElementById('k-topic-title');
+            const main = document.getElementById('k-topic-title');
             const externalHTML = url + " :  Topic id: " + thisTopicID ;
             main.innerHTML = externalHTML;
             
@@ -411,20 +412,30 @@ learn about loadscript
                 
                 });
 
+
             // CAN I GET THAT VALUE USING EMBER (AVOID A CALL, AND USE APP BETTER)
 
-            var topicView = require('discourse/views/topic').default;
+            /*  this didn't work at all.. 
+                        var topicView = require('discourse/views/topic').default;
+                            api.topicView.reopen({
+                                afterRenderEvent : function(){
+                                        //console.dir(this);  //Use this to to get a good overview of what's available
+                                        console.dir(this);
+                                        console.log("Category ID: " + this._controller.model.category.id + " - Category Name: "  + this._controller.model.category.name);
+                                    }
+                            })
+            */
 
-                topicView.reopen({
-
-                    afterRenderEvent : function(){
-                            //console.dir(this);  //Use this to to get a good overview of what's available
-                            console.dir(this);
-                            console.log("Category ID: " + this._controller.model.category.id + " - Category Name: "  + this._controller.model.category.name);
-                            
-                        }
-                })
-
+            const topicController = api.container.lookup("controller:topic");
+            
+            if (topicController) {
+                const topic = topicController.get("model");
+                if (topic) {
+                    console.log(topic);
+                    console.log(topic.category.id);
+                    console.log(topic.category.name);
+                }
+            }
 
 
               
