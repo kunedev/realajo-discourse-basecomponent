@@ -292,11 +292,30 @@ learn about loadscript
                   kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
               }
 
-        
+              console.log("category " + thisCategoryID);
               console.log("categories:");
-              console.log(this.site.categories);
-         //     const category = this.site.categories.find(c => c.id == thisCategoryID )
-              console.log("kcategoryid:" + category[kcategoryid];
+              //console.log(this.site.categories);
+
+              console.log(Discourse);       
+              
+              console.log("Next, categories:");
+              
+              console.log(Discourse.site.categories);
+              
+              const settings = Discourse.SiteSettings,
+                    taggingEnabled = settings.tagging_enabled,
+                    title = settings.title;
+
+                if (taggingEnabled) {
+                    console.log("Yay! "+title+" has tagging enabled!")
+                } else {
+                    console.log("Ohh nooos! "+title+"Does not allow tagging.")
+                }
+
+
+
+          //   const category = this.site.categories.find(c => c.id == thisCategoryID )
+          //   console.log("kcategoryid:" + category[kcategoryid];
         
 
             // prove that we can access & use the Custom Category field. 
