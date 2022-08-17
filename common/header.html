@@ -282,19 +282,22 @@ learn about loadscript
               // reset other shared fields also 
               // no need to reset where they are set by a subsequent line below 
   
-              console.log("category " + thisCategoryID);
+        /*      console.log("category " + thisCategoryID);
               var main = document.getElementById('k-discovery-list-container-top');
               var externalHTML = url + " :  Category id: " + thisCategoryID ;
               main.innerHTML = externalHTML;
-              
+        */
+             
               if (kCustomSidebar !== null) {
                   kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
               }
 
+        /*
               console.log("categories:");
               console.log(this.site.categories);
               const category = this.site.categories.find(c => c.id == thisCategoryID )
               console.log("kcategoryid:" + category[kcategoryid];
+        */
 
             // prove that we can access & use the Custom Category field. 
             //  var kCustomCategoryField = document.getElementsByClassName('category-custom-field-textarea')[0];
