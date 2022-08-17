@@ -315,7 +315,7 @@ learn about loadscript
             console.log("");
 
             console.log("category");
-            const category = categories.find((c) => c.id === 2);
+            const category = categories.find((c) => c.id === thisCategoryID);
             console.log(category);
             console.log("");
 
@@ -324,8 +324,8 @@ learn about loadscript
             console.log(categoriesById);
             console.log("");
 
-            console.log("Current Category ID ");
-            const thisCategory = categoriesById.thisCategoryID;
+            console.log("thisCategory for Current Category ID ");
+            const thisCategory = categoriesById[0].thisCategoryID;
             console.log(thisCategory);
             console.log("thisCategory CategoryInfo");
             const thisCategoryKInfo = thisCategory.kcategoryinfo;
