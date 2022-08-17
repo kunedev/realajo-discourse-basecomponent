@@ -14,6 +14,18 @@
 		console.log("Community Ref: " + kSettingsJSON.CommunityRef);
 		console.log("OtherSettingsArray[2].name : " + kSettingsJSON.OtherSettingArray[2].name);
 		
+
+
+        function SayHello(){
+                alert("Hello");
+        }
+
+
+
+
+
+
+
 	</script>
 
 	<script type="text/discourse-plugin" version="0.1">	// poc only
@@ -115,7 +127,7 @@ learn about loadscript
 </script>
 
 <script type='text/x-handlebars' data-template-name='/connectors/discovery-below/kune-config'>
-    <div id='k-discovery-below'></div>
+    <div id='k-discovery-below'>DemoTextForNow</div>
 </script>
 
 <!-- topic pages / custom fields -->
@@ -182,23 +194,24 @@ learn about loadscript
   //  console.log(this);        // kept, as reference / reminder. 
 
   /*        // all this is working 
+        const siteSettings = Discourse.SiteSettings,
+            taggingEnabled = siteSettings.tagging_enabled,
+            title = siteSettings.title;
 
-  const siteSettings = Discourse.SiteSettings,
-    taggingEnabled = siteSettings.tagging_enabled,
-    title = siteSettings.title;
+        if (taggingEnabled) {     
+            console.log("Yay! "+title+" has tagging enabled!")
+        } else {
+            console.log("Ohh nooos! "+title+"Does not allow tagging.")
+        }
 
-  if (taggingEnabled) {     
-    console.log("Yay! "+title+" has tagging enabled!")
-  } else {
-    console.log("Ohh nooos! "+title+"Does not allow tagging.")
-  }
+        const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings. 
+        console.log("kcommunity : " + kCommunity);
   */ 
 
-  const kCommunity = settings.kcommunity;       // demo of how to retrieve custom settings. 
-  console.log("kcommunity : " + kCommunity);
-   
    //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // change to a variable 
     
+   SayHello();  // test invocation within "text/discourse-plugin" of a JS function declared earlier on page.
+
     api.onPageChange((url, title) => { 
       console.log('user navigated! ' + url);
   
@@ -291,7 +304,7 @@ learn about loadscript
               main.innerHTML = externalHTML;
               
               if (kCustomSidebar !== null) {
-                  kCustomSidebar.innerHTML = externalHTML;
+                  kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
               }
   
                          
