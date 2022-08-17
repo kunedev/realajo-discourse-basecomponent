@@ -22,14 +22,6 @@
 
 	</script>
 
-	<script type="text/discourse-plugin" version="0.1">	// poc only
-
-        console.log(c1);
-
-		console.log (kSettingsJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
-		console.log("Community EntityID (from text/discourse): " + kSettingsJSON.EntityID);
-
-	</script>
 
 <!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
 
@@ -175,7 +167,12 @@
 <script type="text/discourse-plugin" version="0.8.7">
 
         // console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));   // TODO: WORK OUT WHETHER THIS H FUNCTION HELPS ME? 
+ 
+        console.log(c1);
 
+        console.log (kSettingsJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
+        console.log("Community EntityID (from text/discourse): " + kSettingsJSON.EntityID);
+        
         console.log("");                            // TODO: CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT IF SO
         console.log("siteSettings:");
         const siteSettings = api.container.lookup("site-settings:main");
