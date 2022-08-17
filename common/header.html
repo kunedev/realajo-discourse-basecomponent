@@ -284,14 +284,11 @@
     
       // will need some clever function that loops 
 
-
-
-      // document.getElementById('bar').addEventListener('click', doSomething);     // TODO: A  FUNCTION THAT ATTACHES EVENTS TO BUTTONS (CLICK, MOUSEOVER ETC)
-
+    
 
       if (blnIsCategory) {
           
-            SayHello(); // test call 
+        //    SayHello(); // test call 
 
              console.log("category " + thisCategoryID);    
 
@@ -306,7 +303,10 @@
             //  TODO:   Implement something smart.  
             $('#k-discovery-list-container-top').html(thisCategoryKInfo);   
             $('#k-discovery-list-controls-above').html(thisCategoryKInfo);        // Set Div Content 
-                          
+            
+            //CHECK IF THIS WORKS: 
+            document.getElementById('TheButton').addEventListener('click', SayHello());     // TODO: A  FUNCTION THAT ATTACHES EVENTS TO BUTTONS (CLICK, MOUSEOVER ETC)
+            
 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
