@@ -28,6 +28,9 @@
 
 <!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
 
+
+<!------------------------   ORIGINAL CODE FROM WECANIRELAND.          -------------------->
+
 <!-- Font awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
@@ -55,29 +58,11 @@
 	<script src='https://empowercdn.com/include/leaflet-inourcare-add.js?ver=1.0.14' ></script>            
 
 
-
 <!------------------------   END OF THE ORIGINAL CODE FROM WECANIRELAND.          --------------------------------->
 
 
 
 <!------------------------  THIS BLOCK MAKES KUNE DIVS AVAILABLE TO JS          --------------------------------->
-
-<!-- 
-refs:
-https://meta.discourse.org/t/a-new-versioned-api-for-client-side-plugins/40051
-https://meta.discourse.org/t/using-the-pluginapi-in-site-customizations/41281 >
-https://regex101.com/r/rOHmo8/1
-https://meta.discourse.org/t/a-tour-of-how-the-widget-virtual-dom-code-in-discourse-works/40347
-learn about loadscript 
--->
-
-<script>	
-    function DoAlert(){
-        alert("demo - calling a js function from within text/discourse-plugin ");   // WORKS FINE 
-    }
-</script>	
-
-<!-- global custom fields -->
 
 <script type='text/x-handlebars' data-template-name='/connectors/above-site-header/kune-config'>
     <div id='k-above-site-header'></div>
@@ -177,8 +162,6 @@ learn about loadscript
     <div id='k-after-d-editor'></div>
 </script>
 
-<!-- end of custom fields -->
-
 <!------------------------  END OF MAKING KUNE DIVS AVAILABLE TO JS          --------------------------------->
 
 
@@ -186,38 +169,31 @@ learn about loadscript
 
 <script type="text/discourse-plugin" version="0.8.7">
 
-    console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));
+        // console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));   // TODO: WORK OUT WHETHER THIS H FUNCTION HELPS ME? 
 
-        console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT .. WOULD IT WORK ONCE-OFF?
-        console.log("siteSettings");
+        console.log("");                            // TODO: CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT IF SO
+        console.log("siteSettings:");
         const siteSettings = api.container.lookup("site-settings:main");
         console.log(siteSettings);
-        console.log("");
-        console.log("Site");
+        console.log("Site:");
         const Site = api.container.lookup("service:site");
         console.log(Site);
-        console.log("");
-        console.log("currentUser");
+        console.log("currentUser:");
         const currentUser =  api.getCurrentUser();
         console.log(currentUser);
-        console.log(""); 
-
         console.log("categoriesById:");     // make this easily available 
         const categoriesById = Site.categoriesById;
         console.log(categoriesById);
-        console.log("");
-
-        const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings, as defined in the Theme Header.
+        const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings, ie as defined in the Theme Head Section.
         console.log("kcommunity : " + kCommunity);
          
         SayHello();  // test invocation within "text/discourse-plugin" of a JS function declared earlier on page.
 
-  */ 
 
-   //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // change to a variable 
+   //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
    
 
-    api.onPageChange((url, title) => { 
+    api.onPageChange((url, title) => {      // this runs dynamically every time we switch page wihtin Discourse. 
 
       console.log('user navigated! ' + url);
   
@@ -285,48 +261,12 @@ learn about loadscript
       }
   
       // ---------- end of other pagetype checks  ------------
-      
-      // nb the common all-page items don't get reset per page afaik 
   
-      var kCustomSidebar = document.getElementById('ksidebardiv');
+      var kCustomSidebar = document.getElementById('ksidebardiv');  // div for the right hand sidebar.  May not need this variable because we're using jquery. 
         
       if (blnIsCategory) {
           
-              document.getElementById('k-discovery-list-controls-above').innerHTML = "";     // emptying it because it may have been set by Homepage. 
-              document.getElementById('k-discovery-list-container-top').innerHTML = "";     // emptying it because it may have been set by Homepage. 
-              // reset other shared fields also 
-              // no need to reset where they are set by a subsequent line below 
-  
-        /*      console.log("category " + thisCategoryID);
-              var main = document.getElementById('k-discovery-list-container-top');
-              var externalHTML = url + " :  Category id: " + thisCategoryID ;
-              main.innerHTML = externalHTML;
-        */
-
-            // TODO:  TIDY UP ALL THIS GUNK, ONCE I UNDERSTAND IT ALL WELL ENOUGH 
-             
-              if (kCustomSidebar !== null) {
-                  kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
-              }
-
-
              console.log("category " + thisCategoryID);    
-
-/*          console.log("categories");                  // this code is all working, but the categoriesById approach is probably more efficient. 
-            const categories = Site.categories; 
-            console.log(categories);
-            console.log("");
-
-            console.log("category");
-            const category = categories.find((c) => c.id == thisCategoryID);
-            console.log(category);
-            console.log("");
-
-            console.log("kcategoryinfo");
-            const categoryI = category;
-            console.log(category.kcategoryinfo);
-            console.log("");
-*/
 
             console.log("thisCategory for Current Category ID ");
             const thisCategory = categoriesById[thisCategoryID]; 
@@ -336,34 +276,15 @@ learn about loadscript
             console.log(thisCategoryKInfo);
             console.log("");
 
-
-            const taggingEnabled = siteSettings.tagging_enabled,
+            /* STANDARD DISCOURSE SETTINGS .. MAINTAINED FOR REFERENCE ONLY 
+            const taggingEnabled = siteSettings.tagging_enabled,     
             title = siteSettings.title;
-
-        if (taggingEnabled) {
-            console.log("Yay! "+title+" has tagging enabled!")
-        } else {
-            console.log("Ohh nooos! "+title+"Does not allow tagging.")
-        }
-
-
-      //    const category = Discourse.site.categories.findBy("id", thisCategoryID);
-       //   console.log("THE CATEGORY");
-      //    console.log(category);
-          
-     //     console.log("kcategoryid:" + category["kcategoryid"];
-
-          //   const category = this.site.categories.find(c => c.id == thisCategoryID )
-          //   console.log("kcategoryid:" + category[kcategoryid];
-        
-
-            // prove that we can access & use the Custom Category field. 
-            //  var kCustomCategoryField = document.getElementsByClassName('category-custom-field-textarea')[0];
-            //  var kTargetCategoryField = document.getElementById('k-discovery-below');
-            //  kTargetCategoryField.innerHTML = kCustomCategoryField.innerHTML;    // show custom field here, for demo purposes
+            */
                 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
+            // TODO:  DECIDE WHAT WE WANT TO DO WITH HOMEPAGE 
+
             document.getElementById('k-discovery-list-controls-above').innerHTML = "";     // emptying it because it may have been set by Category page. 
             document.getElementById('k-discovery-list-container-top').innerHTML = "";     // emptying it because it may have been set by Category page. 
             // reset other shared fields also 
@@ -379,14 +300,6 @@ learn about loadscript
               
       } else if (blnIsTopic) {
            
-            const main = document.getElementById('k-topic-title');
-            const externalHTML = url + " :  Topic id: " + thisTopicID ;
-            main.innerHTML = externalHTML;
-            
-      //      if (kCustomSidebar !== null) {
-       //         kCustomSidebar.innerHTML = externalHTML;
-       //     }
-            
             // prove that we can access & use the Custom Topic field. 
             var kCustomTopicField = document.getElementsByClassName('topic-title-custom-field-container')[0];
             var kTargetTopicField = document.getElementById('k-topic-above-suggested');
@@ -395,16 +308,14 @@ learn about loadscript
             // NEXT, GET CURRENT TOPIC INFO .. ESPECIALLY GET CATEGORYID AND KTOPICINFO FOR CURRENT TOPIC 
 
                  // NOTE HOW EASY THE $.getJSON FUNCTION IS TO CALL .. LOOKS LIKE A GREAT WAY TO BUILD MY AJAX FUNCTIONS 
-
-            /*      THIS WORKS BUT IT REQUIRES AN EXTRA CALL, I THINK 
-            $.getJSON(window.location.href + '.json', function (data) {         // good that it's async. 
-                const pagejson = data;
-                const topicCategoryId = pagejson.category_id;
-
-                console.log(topicCategoryId);
-                });
-            */
-
+                 
+                /*      THIS WORKS BUT IT REQUIRES AN EXTRA CALL, I THINK 
+                $.getJSON(window.location.href + '.json', function (data) {         // good that it's async. 
+                    const pagejson = data;
+                    const topicCategoryId = pagejson.category_id;
+                    console.log(topicCategoryId);
+                    });
+                */
 
             // GET CATEGORY INFO USING EMBER (AND NEXT, DO SOMETHING WITH IT)
 
@@ -431,21 +342,16 @@ learn about loadscript
                     console.log(thisTopicCategoryKInfo);
                     console.log("next, set the sidebar");
  
-                    $('#ksidebardiv').html(thisTopicKInfo);     // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
-                    $('#k-after-topic-footer-buttons').html('Seeing if this works also?<br>' + thisTopicKInfo);     // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
+                     // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
+                     $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
+                    $('#k-after-topic-footer-buttons').html('Seeing if this works also?<br>' + thisTopicKInfo);      // write html into that div 
                     
-
-
-                  //  $('#ksidebardiv').html('<b>Demo text</b><br>Test<br><b>Yahoooo</b><button onclick="SayHello()">Say Hello</button> ');
-
-
                 }
             }
 
       } else if (blnIsGroup) {    // currently not being set as true at all 
-              const main = document.getElementById('k-group-reports-nav-item');
-              main.innerHTML = thisGroupName;
-              
+
+              $('#k-group-reports-nav-item').html(thisGroupName);    
               
       } else {    // some other page
           
