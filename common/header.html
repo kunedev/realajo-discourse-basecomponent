@@ -211,12 +211,7 @@ learn about loadscript
     api.onPageChange((url, title) => { 
       console.log('user navigated! ' + url);
   
-        console.log("categoriesById:");     // make this easily available 
-        const categoriesById = Site.categoriesById;
-        console.log(categoriesById);
-        console.log("");
-
-        console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. THIS (ON PAGE LOAD) SEEMS MORE AKIN TO WHAT I KNOW OF DISCOURSE. 
+      console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT .. WOULD IT WORK ONCE-OFF?
         console.log("siteSettings");
         const siteSettings = api.container.lookup("site-settings:main");
         console.log(siteSettings);
@@ -229,6 +224,11 @@ learn about loadscript
         const currentUser =  api.getCurrentUser();
         console.log(currentUser);
         console.log(""); 
+
+        console.log("categoriesById:");     // make this easily available 
+        const categoriesById = Site.categoriesById;
+        console.log(categoriesById);
+        console.log("");
 
         var blnIsCategory = false;
         var blnIsTopic = false;
