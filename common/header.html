@@ -168,7 +168,12 @@
 
         // console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));   // TODO: WORK OUT WHETHER THIS H FUNCTION HELPS ME? 
  
-        console.log(c1);
+        function SayHello2(){  alert("Hello 2  (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
+        const c2 = "variable set in Discourse script .. the JS one seems to be broken, now.  It may be to do with API versions.";
+
+        SayHello2();
+
+        console.log(c2);
 
         console.log (kSettingsJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
         console.log("Community EntityID (from text/discourse): " + kSettingsJSON.EntityID);
