@@ -72,22 +72,25 @@ background-color: ghostwhite !important;
   .layouts-custom-html{       /* right-hand-side Custom HTM */
     background: #cde7da !important;
   }
-  
-  
+    
   /* end of styling for the Category List widget (left hand category nav option) */
-  
-  
+
+
+  /* STYLING FOR CUSTOM FIELDS */ 
+    
   .topic-title-custom-field-container{      /* hide the custom field */ 
-      display: none !important;
+  //    display: none !important;
   }
-  .topic-custom-field-textarea{      /* hide the custom field ... mmm .. must remove it from plugin once finished */ 
-      display: none !important;
-  }
-  
-  .category-custom-field-onscreen{      /* hide the custom field */ 
-      display: none !important;
+  .topic-custom-field-textarea{      /* hide the custom field ...  */ 
+  //    display: none !important;
   }
   
+  .category-custom-field-container{      /* hide the custom field ( ? )  */ 
+   //   display: none !important;
+  }
+  
+
+/* AD-HOC VISUAL */ 
   #ksidebardiv{ 
     color: red !important;
   }
@@ -97,7 +100,6 @@ background-color: ghostwhite !important;
     background-color: rgb(192, 235, 192) ;
     font-weight: bold;
   } 
-  
   
   
   

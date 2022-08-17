@@ -290,7 +290,12 @@ learn about loadscript
               if (kCustomSidebar !== null) {
                   kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
               }
-    
+
+              console.log("categories:");
+              console.log(this.site.categories);
+              const category = this.site.categories.find(c => c.id == thisCategoryID )
+              console.log("kcategoryid:" + category[kcategoryid];
+
             // prove that we can access & use the Custom Category field. 
             //  var kCustomCategoryField = document.getElementsByClassName('category-custom-field-textarea')[0];
             //  var kTargetCategoryField = document.getElementById('k-discovery-below');
