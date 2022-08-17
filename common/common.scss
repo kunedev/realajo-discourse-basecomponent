@@ -78,15 +78,15 @@ background-color: ghostwhite !important;
   
   /* STYLING FOR CUSTOM FIELDS */ 
     
-  .topic-title-custom-field-container{      /* hide the custom field */ 
-  //    display: none !important;
+  .topic-title-custom-field-container{      /* hide the custom field when in read-only mode. */ 
+    display: none !important;
   }
-  .topic-custom-field-textarea{      /* hide the custom field ...  */ 
-  //    display: none !important;
+  .topic-custom-field-textarea{      /* TODO: hide the custom field when editing  .. this needs to be maintained via the external API...  */ 
+  //    display: none !important;   //  I'm keeping this visible for now for easy testing.  
   }
   
-  .category-custom-field-container{      /* hide the custom field ( ? )  */ 
-   //   display: none !important;
+  .category-custom-field-container{    /* TODO: hide the custom field when editing  .. this needs to be maintained via the external API...  */ 
+   //   display: none !important;     //  I'm keeping this visible for now for easy testing. 
   }
   
 
