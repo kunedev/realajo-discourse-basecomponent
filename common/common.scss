@@ -75,7 +75,7 @@ background-color: ghostwhite !important;
     
   /* end of styling for the Category List widget (left hand category nav option) */
 
-
+  
   /* STYLING FOR CUSTOM FIELDS */ 
     
   .topic-title-custom-field-container{      /* hide the custom field */ 
@@ -91,7 +91,12 @@ background-color: ghostwhite !important;
   
 
 /* AD-HOC VISUAL */ 
-  #ksidebardiv{ 
+
+#kSettings{     // settings in the Head section of theme 
+  display: none !important;
+}
+
+#ksidebardiv{ 
     color: red !important;
   }
   
