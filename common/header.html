@@ -426,6 +426,7 @@ learn about loadscript
             
             if (topicController) {
                 const thisTopic = topicController.get("model");
+
                 if (thisTopic) {
 
                     console.log("Category Info for Current Topic");
@@ -433,15 +434,20 @@ learn about loadscript
                     console.log(thisTopic.category.id);
                     console.log(thisTopic.category.name);
 
+                    const thisTopicKInfo = thisTopic.ktopicinfo;    // Kune info for topic 
+
                     console.log("Lookup/Indepth Category Info for Current Topic ");
                     const thisTopicCategory = categoriesById[thisTopic.category.id]; 
+
                     console.log(thisTopicCategory);
                     console.log("thisTopicCategory kcategoryinfo");
                     const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
                     console.log(thisTopicCategoryKInfo);
-                    console.log("next, the sidebar");
+                    console.log("next, set the sidebar");
                     
-                    $('#ksidebardiv').html('<b>Demo text</b><br>Test<br><b>Yahoooo</b><button onclick="SayHello()">Say Hello</button> ');
+                    $('#ksidebardiv').html(thisTopicKInfo);     // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
+
+                  //  $('#ksidebardiv').html('<b>Demo text</b><br>Test<br><b>Yahoooo</b><button onclick="SayHello()">Say Hello</button> ');
 
 
                 }
