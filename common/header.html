@@ -294,22 +294,33 @@ learn about loadscript
 
               console.log("category " + thisCategoryID);    
 
-              console.log("Discourse.site"); 
-              
-         //     console.log(Discourse.site);
+             console.log("");
+             console.log("siteSettings");
+             const siteSettings = api.container.lookup("site-settings:main");
+             console.log(siteSettings);
+             console.log("");
+             console.log("Site");
+             const Site = api.container.lookup("service:site");
+             console.log(Site);
+             console.log("");
+             console.log("currentUser");
+             const currentUser =  api.getCurrentUser();
+             console.log(currentUser);
+             console.log("");
 
-         //     console.log("Discourse.site.categories"); 
-         //     console.log(Discourse.site.categories);
+             //  const settings = Discourse.SiteSettings,
+             console.log("categories");
+            const categories = Site.current().categories;
+            console.log(categories);
+            console.log("");
 
-         //     console.log("Next, categories:");
-              
-         //     console.log(Discourse.site.categories);
+            console.log("category");
+            const category = categories.find((c) => c.id === 2);
+            console.log(category);
+            console.log("");
 
-             const settings = api.container.lookup("site-settings:main");
-           //  const settings = Discourse.SiteSettings,
-           
-             const taggingEnabled = settings.tagging_enabled,
-                   title = settings.title;
+            const taggingEnabled = siteSettings.tagging_enabled,
+            title = siteSettings.title;
 
         if (taggingEnabled) {
             console.log("Yay! "+title+" has tagging enabled!")
