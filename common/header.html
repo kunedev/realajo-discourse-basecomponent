@@ -16,13 +16,7 @@
 		
 
 
-        function SayHello(){
-                alert("Hello");
-        }
-
-
-
-
+        //        function SayHello(){                  alert("Hello");           }
 
 
 
@@ -206,12 +200,13 @@ learn about loadscript
 
         const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings. 
         console.log("kcommunity : " + kCommunity);
+         
+        SayHello();  // test invocation within "text/discourse-plugin" of a JS function declared earlier on page.
+
   */ 
 
    //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // change to a variable 
-    
-   SayHello();  // test invocation within "text/discourse-plugin" of a JS function declared earlier on page.
-
+   
     api.onPageChange((url, title) => { 
       console.log('user navigated! ' + url);
   
