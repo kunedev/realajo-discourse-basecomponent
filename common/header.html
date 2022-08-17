@@ -2,13 +2,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
 
-<!--   PROOF OF CONCEPT OF 
-							A) READING SETTINGS THAT ARE SET VIA HEADER ON MAIN THEME   
-							B) ASSIGNING THIS TO 2 VARIABLES, IN i) JS and ii) DISCOURSE/TEXT THEN
-							C) REUSING THOSE VARIABLES LATER IN JS, AND DISCOUSE/TEXT, RESPECTIVELY 				--> 
+<!--    WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) 
 
+        A) READING SETTINGS THAT ARE SET VIA HEADER ON MAIN THEME   
+        B) ASSIGNING THIS TO VARIABLE IN JS 
+        C) REUSING THAT VARIABLES LATER IN JS  AND DISCOUSE/TEXT  				--> 
 
-	<script>		// poc only
+	<script>		
 		var kSettingsDivReader = document.getElementById('kSettings');		
 		const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
 
@@ -16,7 +16,7 @@
 		console.log("Community Ref: " + kSettingsJSON.CommunityRef);
 		console.log("OtherSettingsArray[2].name : " + kSettingsJSON.OtherSettingArray[2].name);
 		
-        function SayHello(){  alert("Hello   (but nb disable inline scripts before release");           }
+        function SayHello(){  alert("Hello   (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
 
 	</script>
 
@@ -26,7 +26,7 @@
 
 	</script>
 
-<!--   END OF PROOF OF CONCEPT REF SETTINGS ETC  --> 
+<!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
 
 <!-- Font awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -207,21 +207,7 @@ learn about loadscript
         console.log(categoriesById);
         console.log("");
 
-
-  //  console.log(this);        // kept, as reference / reminder. 
-
-  /*        // all this is working 
-        const siteSettings = Discourse.SiteSettings,
-            taggingEnabled = siteSettings.tagging_enabled,
-            title = siteSettings.title;
-
-        if (taggingEnabled) {     
-            console.log("Yay! "+title+" has tagging enabled!")
-        } else {
-            console.log("Ohh nooos! "+title+"Does not allow tagging.")
-        }
-
-        const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings. 
+        const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings, as defined in the Theme Header.
         console.log("kcommunity : " + kCommunity);
          
         SayHello();  // test invocation within "text/discourse-plugin" of a JS function declared earlier on page.
@@ -444,9 +430,8 @@ learn about loadscript
                     const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
                     console.log(thisTopicCategoryKInfo);
                     console.log("next, set the sidebar");
-                    
+ 
                     $('#ksidebardiv').html(thisTopicKInfo);     // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
-
                     $('#k-after-topic-footer-buttons').html('Seeing if this works also?<br>' + thisTopicKInfo);     // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
                     
 
