@@ -104,7 +104,7 @@
 </script>
 
 <script type='text/x-handlebars' data-template-name='/connectors/discovery-below/kune-config'>
-    <div id='k-discovery-below'>DemoTextForNow</div>
+    <div id='k-discovery-below'></div>
 </script>
 
 <!-- topic pages / custom fields -->
@@ -214,34 +214,36 @@
    
     /*      EXPERIMENTAL ..  A FUNCTION THAT PUTS ALL THE CONTENT INTO THE RIGHT PLACE, AND CAN ACCESS BOTH THE DOM AND THE EMBER OBJECTS.  */
 
+    /*
     Function BuildSmartContent(pgType){         // note, this gives us a way of abstracting out the logic while still keeping access to Ember controllers etc. 
                                                 // this function may not be ultra-heavily used .. but it gives us a way to (FIRSTLY) process content using both DOM and Ember 
 
-        alert ("running BuildSmartContent" + pgType);
+            alert ("running BuildSmartContent" + pgType);
 
-        /*
-            if (pgType = "c"){  // category  
+            
+                if (pgType = "c"){  // category  
 
-            }
-            else if (pgType = "t"){  // topic 
-                
-            }
-            else if (pgType = "g"){  // group 
-                
-            }
-            else if (pgType = "h"){  // homepage 
-                
-            }
+                }
+                else if (pgType = "t"){  // topic 
+                    
+                }
+                else if (pgType = "g"){  // group 
+                    
+                }
+                else if (pgType = "h"){  // homepage 
+                    
+                }
 
-        */
+            
 
-        // it's likely that we will have a loop, or some recursion, or both .. lets see what is needed 
+            // it's likely that we will have a loop, or some recursion, or both .. lets see what is needed 
 
-        // when finished with processing within Ember, now (SECONDLY) execute JS logic that pulls in external AJAX calls or other, wider, non-Discourse-specific content 
-        ExecuteSmartDOM(pgType);  // when done, call function within external JS script that scans the DOM and does everything it needs to do, to 
+            // when finished with processing within Ember, now (SECONDLY) execute JS logic that pulls in external AJAX calls or other, wider, non-Discourse-specific content 
+            ExecuteSmartDOM(pgType);  // when done, call function within external JS script that scans the DOM and does everything it needs to do, to 
 
 
-    }
+        }
+    */
 
 
     /* ----------------  NEXT - CRITICAL SECTION .. THIS RUNS EVERY TIME WE NAVIGATE FROM PAGE TO PAGE WITHIN DISCOURSE     ------------ */
@@ -339,7 +341,8 @@
             $('#k-discovery-list-container-top').html(thisCategoryKInfo);   
             $('#k-discovery-list-controls-above').html("");        // Set Div Content 
 
-            BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+           // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+            ExecuteSmartDOM(strPageType);
 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
@@ -350,7 +353,9 @@
             $('#k-discovery-list-container-top').html("");   
             $('#k-discovery-list-controls-above').html( url + " Homepage type: " + strHomepageView);        // Set Div Content 
                           
-            BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+           // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+           ExecuteSmartDOM(strPageType);
+
 
       } else if (blnIsTopic) {
            
@@ -400,7 +405,9 @@
                     $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
                     $('#k-after-topic-footer-buttons').html(thisTopicKInfo + "<BR>"+ thisTopicCategoryKInfo);      // write html into that div 
 
-                    BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+                // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+                ExecuteSmartDOM(strPageType);
+
 
                 }
             }
@@ -409,7 +416,8 @@
               strPageType = "g";
               $('#k-group-reports-nav-item').html(thisGroupName);    
 
-              BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+              // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+              ExecuteSmartDOM(strPageType);
 
               
       } else {    // some other page
