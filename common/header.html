@@ -274,14 +274,7 @@ learn about loadscript
       // nb the common all-page items don't get reset per page afaik 
   
       var kCustomSidebar = document.getElementById('ksidebardiv');
-      
-      var kCustomTopicField = document.getElementsByClassName('topic-title-custom-field-container')[0];
-      var kCustomCategoryField = document.getElementsByClassName('category-custom-field-textarea')[0];
-  
-      var kTargetTopicField = document.getElementById('k-topic-above-suggested');
-      var kTargetCategoryField = document.getElementById('k-discovery-below');
-      
-  
+        
       if (blnIsCategory) {
           
               document.getElementById('k-discovery-list-controls-above').innerHTML = "";     // emptying it because it may have been set by Homepage. 
@@ -297,40 +290,41 @@ learn about loadscript
               if (kCustomSidebar !== null) {
                   kCustomSidebar.innerHTML = "Sidebar: " + externalHTML;
               }
-  
-                         
-              kTargetCategoryField.innerHTML = kCustomCategoryField.innerHTML;    // for demo purposes: show custom field here.
-              
-  
-          var kCustomTopicField = document.getElementsByClassName('topic-title-custom-field-container')[0];
-          var kTargetTopicField = document.getElementById('topic-above-suggested');
-          
-      
+    
+            // prove that we can access & use the Custom Category field. 
+            //  var kCustomCategoryField = document.getElementsByClassName('category-custom-field-textarea')[0];
+            //  var kTargetCategoryField = document.getElementById('k-discovery-below');
+            //  kTargetCategoryField.innerHTML = kCustomCategoryField.innerHTML;    // show custom field here, for demo purposes
+                
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
-              document.getElementById('k-discovery-list-controls-above').innerHTML = "";     // emptying it because it may have been set by Category page. 
-              document.getElementById('k-discovery-list-container-top').innerHTML = "";     // emptying it because it may have been set by Category page. 
-              // reset other shared fields also 
-              // no need to reset where they are set by a subsequent line below 
-  
-              var main = document.getElementById('k-discovery-list-controls-above');
-              var externalHTML = url + " Homepage type: " + strHomepageView ;
-              main.innerHTML = externalHTML;
-              
-              if (kCustomSidebar !== null) {
-                  kCustomSidebar.innerHTML = externalHTML;
-              }
+            document.getElementById('k-discovery-list-controls-above').innerHTML = "";     // emptying it because it may have been set by Category page. 
+            document.getElementById('k-discovery-list-container-top').innerHTML = "";     // emptying it because it may have been set by Category page. 
+            // reset other shared fields also 
+            // no need to reset where they are set by a subsequent line below 
+
+            var main = document.getElementById('k-discovery-list-controls-above');
+            var externalHTML = url + " Homepage type: " + strHomepageView ;
+            main.innerHTML = externalHTML;
+            
+            if (kCustomSidebar !== null) {
+                kCustomSidebar.innerHTML = externalHTML;
+            }
               
       } else if (blnIsTopic) {
-              const main = document.getElementById('k-topic-title');
-              const externalHTML = url + " :  Topic id: " + thisTopicID ;
-              main.innerHTML = externalHTML;
-              
-              if (kCustomSidebar !== null) {
-                  kCustomSidebar.innerHTML = externalHTML;
-              }
-              
-              kTargetTopicField.innerHTML = kCustomTopicField.innerHTML;  // test .. apply content of custom field to another text holder
+           
+        const main = document.getElementById('k-topic-title');
+            const externalHTML = url + " :  Topic id: " + thisTopicID ;
+            main.innerHTML = externalHTML;
+            
+            if (kCustomSidebar !== null) {
+                kCustomSidebar.innerHTML = externalHTML;
+            }
+            
+            // prove that we can access & use the Custom Topic field. 
+            var kCustomTopicField = document.getElementsByClassName('topic-title-custom-field-container')[0];
+            var kTargetTopicField = document.getElementById('k-topic-above-suggested');
+            kTargetTopicField.innerHTML = kCustomTopicField.innerHTML;  // test .. apply content of custom field to another text holder
               
       } else if (blnIsGroup) {    // currently not being set as true at all 
               const main = document.getElementById('k-group-reports-nav-item');
