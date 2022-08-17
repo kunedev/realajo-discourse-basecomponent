@@ -8,17 +8,20 @@
         B) ASSIGNING THIS TO VARIABLE IN JS 
         C) REUSING THAT VARIABLES LATER IN JS  AND DISCOUSE/TEXT  				--> 
 
+
+    <script src="https://empowercdn.com/js/utils/kgeneralutils.js?v=000003"></script>  <!--  testing / can we run functions from here? --> 
+
 	<script>		
-		var kSettingsDivReader = document.getElementById('kSettings');		
+	
+        alert("already linked out to the doc");
+    
+        var kSettingsDivReader = document.getElementById('kSettings');		
 		const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
 
 		const kSettingsJSON = JSON.parse(kSettingsJS);
 		console.log("Community Ref: " + kSettingsJSON.CommunityRef);
 		console.log("OtherSettingsArray[2].name : " + kSettingsJSON.OtherSettingArray[2].name);
 	</script>
-
-
-    <script src="https://empowercdn.com/js/utils/kgeneralutils.js?v=000002"></script>  <!--  testing / can we run functions from here? --> 
 
 
 <!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
