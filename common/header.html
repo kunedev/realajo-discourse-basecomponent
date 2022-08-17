@@ -73,7 +73,7 @@ learn about loadscript
 
 <script>	
     function DoAlert(){
-        alert("demo - calling a js function from within text/discourse-plugin ");
+        alert("demo - calling a js function from within text/discourse-plugin ");   // WORKS FINE 
     }
 </script>	
 
@@ -188,9 +188,7 @@ learn about loadscript
 
     console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));
 
-    DoAlert();
-
-    console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT .. WOULD IT WORK ONCE-OFF?
+        console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT .. WOULD IT WORK ONCE-OFF?
         console.log("siteSettings");
         const siteSettings = api.container.lookup("site-settings:main");
         console.log(siteSettings);
@@ -408,7 +406,6 @@ learn about loadscript
             var kTargetTopicField = document.getElementById('k-topic-above-suggested');
             kTargetTopicField.innerHTML = kCustomTopicField.innerHTML;  // test .. apply content of custom field to another text holder
 
-
             // NEXT, GET CURRENT TOPIC INFO .. ESPECIALLY GET CATEGORYID AND KTOPICINFO FOR CURRENT TOPIC 
 
                  // NOTE HOW EASY THE $.getJSON FUNCTION IS TO CALL .. LOOKS LIKE A GREAT WAY TO BUILD MY AJAX FUNCTIONS 
@@ -443,6 +440,8 @@ learn about loadscript
                     const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
                     console.log(thisTopicCategoryKInfo);
                     console.log("");
+
+                    $('#k-topic-above-suggested').html('<b>Demo text</b><br>Test<br><b>Yahoooo</b>' + thisTopicCategoryKInfo);
 
 
                 }
