@@ -18,12 +18,14 @@
 		console.log("OtherSettingsArray[2].name : " + kSettingsJSON.OtherSettingArray[2].name);
 		
         function SayHello(){  alert("Hello   (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
+        const c1 = "variable set in js but displayed in discourse";
 
 	</script>
 
 	<script type="text/discourse-plugin" version="0.1">	// poc only
 
-        SayHello();
+        console.log(c1);
+
 		console.log (kSettingsJS + "  -  script (text/discourse) .. this proves the JS variable is available within TEXT/DISCOURSE .. ULTRACOOL!");		 // this proves that the JS variable remains available 
 		console.log("Community EntityID (from text/discourse): " + kSettingsJSON.EntityID);
 
