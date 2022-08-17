@@ -1,3 +1,4 @@
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
 
@@ -203,6 +204,10 @@ learn about loadscript
 
    //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // change to a variable 
    
+   const h = require("virtual-dom").h;
+
+
+
     api.onPageChange((url, title) => { 
       console.log('user navigated! ' + url);
   
@@ -398,8 +403,17 @@ learn about loadscript
 
             // NEXT, GET CURRENT TOPIC INFO .. ESPECIALLY GET CATEGORYID AND KTOPICINFO FOR CURRENT TOPIC 
 
+            $.getJSON(window.location.href + '.json', function (data) {         // good that it's async. 
+                const pagejson = data;
+                const topicCategoryId = pagejson.category_id;
+
+                alert(topicCategoryId);
+                
+                });
 
 
+
+            // CAN I GET THAT VALUE USING EMBER (AVOID A CALL, AND USE APP BETTER)
 
 
               
