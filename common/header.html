@@ -319,19 +319,19 @@ learn about loadscript
             console.log(category);
             console.log("");
 
-
-
             console.log("categoriesById");
             const categoriesById = Site.categoriesById;
             console.log(categoriesById);
             console.log("");
 
-            console.log("Category ID 2");
-            const categoryId2 = categoriesById.2;
-            console.log(categoryId2);
+            console.log("Current Category ID ");
+            const thisCategory = categoriesById.thisCategoryID;
+            console.log(thisCategory);
+            console.log("thisCategory CategoryInfo");
+            const thisCategoryKInfo = thisCategory.kcategoryinfo;
+            console.log(thisCategoryKInfo);
             console.log("");
 
-            
             const taggingEnabled = siteSettings.tagging_enabled,
             title = siteSettings.title;
 
