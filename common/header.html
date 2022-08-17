@@ -7,6 +7,7 @@
 							B) ASSIGNING THIS TO 2 VARIABLES, IN i) JS and ii) DISCOURSE/TEXT THEN
 							C) REUSING THOSE VARIABLES LATER IN JS, AND DISCOUSE/TEXT, RESPECTIVELY 				--> 
 
+
 	<script>		// poc only
 		var kSettingsDivReader = document.getElementById('kSettings');		
 		const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
@@ -24,8 +25,6 @@
 		console.log("Community EntityID (from text/discourse): " + kSettingsJSON.EntityID);
 
 	</script>
-
-
 
 <!--   END OF PROOF OF CONCEPT REF SETTINGS ETC  --> 
 
@@ -72,6 +71,11 @@ https://meta.discourse.org/t/a-tour-of-how-the-widget-virtual-dom-code-in-discou
 learn about loadscript 
 -->
 
+<script>	
+    function DoAlert(){
+        alert("demo - calling a js function from within text/discourse-plugin ");
+    }
+</script>	
 
 <!-- global custom fields -->
 
@@ -183,6 +187,8 @@ learn about loadscript
 <script type="text/discourse-plugin" version="0.8.7">
 
     console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));
+
+    DoAlert();
 
     console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT .. WOULD IT WORK ONCE-OFF?
         console.log("siteSettings");
