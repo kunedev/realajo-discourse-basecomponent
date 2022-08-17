@@ -184,24 +184,6 @@ learn about loadscript
 
     console.log(api.h('b', ['hello', 'world']));
 
-    console.log("categoriesById:");     // make this easily available 
-    const categoriesById = Site.categoriesById;
-    console.log(categoriesById);
-    console.log("");
-
-    console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. THIS (ON PAGE LOAD) SEEMS MORE AKIN TO WHAT I KNOW OF DISCOURSE. 
-    console.log("siteSettings");
-    const siteSettings = api.container.lookup("site-settings:main");
-    console.log(siteSettings);
-    console.log("");
-    console.log("Site");
-    const Site = api.container.lookup("service:site");
-    console.log(Site);
-    console.log("");
-    console.log("currentUser");
-    const currentUser =  api.getCurrentUser();
-    console.log(currentUser);
-    console.log(""); 
 
   //  console.log(this);        // kept, as reference / reminder. 
 
@@ -229,12 +211,31 @@ learn about loadscript
     api.onPageChange((url, title) => { 
       console.log('user navigated! ' + url);
   
-      var blnIsCategory = false;
-      var blnIsTopic = false;
-      var blnIsGroup = false; 
-      var blnIsHomepage = false; 
-      var strHomepageView = "";
-      
+        console.log("categoriesById:");     // make this easily available 
+        const categoriesById = Site.categoriesById;
+        console.log(categoriesById);
+        console.log("");
+
+        console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. THIS (ON PAGE LOAD) SEEMS MORE AKIN TO WHAT I KNOW OF DISCOURSE. 
+        console.log("siteSettings");
+        const siteSettings = api.container.lookup("site-settings:main");
+        console.log(siteSettings);
+        console.log("");
+        console.log("Site");
+        const Site = api.container.lookup("service:site");
+        console.log(Site);
+        console.log("");
+        console.log("currentUser");
+        const currentUser =  api.getCurrentUser();
+        console.log(currentUser);
+        console.log(""); 
+
+        var blnIsCategory = false;
+        var blnIsTopic = false;
+        var blnIsGroup = false; 
+        var blnIsHomepage = false; 
+        var strHomepageView = "";
+        
       // ---------- homepage check  ------------
       
       if (url == "/")   {                // if there's no match for this pattern then there is nothing after the ".com/" (or other tld)
