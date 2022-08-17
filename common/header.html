@@ -182,7 +182,26 @@ learn about loadscript
 
 <script type="text/discourse-plugin" version="0.8.7">
 
-    console.log(api.h('b', ['hello', 'world']));
+    console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));
+
+    console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT .. WOULD IT WORK ONCE-OFF?
+        console.log("siteSettings");
+        const siteSettings = api.container.lookup("site-settings:main");
+        console.log(siteSettings);
+        console.log("");
+        console.log("Site");
+        const Site = api.container.lookup("service:site");
+        console.log(Site);
+        console.log("");
+        console.log("currentUser");
+        const currentUser =  api.getCurrentUser();
+        console.log(currentUser);
+        console.log(""); 
+
+        console.log("categoriesById:");     // make this easily available 
+        const categoriesById = Site.categoriesById;
+        console.log(categoriesById);
+        console.log("");
 
 
   //  console.log(this);        // kept, as reference / reminder. 
@@ -209,27 +228,9 @@ learn about loadscript
    
 
     api.onPageChange((url, title) => { 
+
       console.log('user navigated! ' + url);
   
-      console.log("");                            // CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT .. WOULD IT WORK ONCE-OFF?
-        console.log("siteSettings");
-        const siteSettings = api.container.lookup("site-settings:main");
-        console.log(siteSettings);
-        console.log("");
-        console.log("Site");
-        const Site = api.container.lookup("service:site");
-        console.log(Site);
-        console.log("");
-        console.log("currentUser");
-        const currentUser =  api.getCurrentUser();
-        console.log(currentUser);
-        console.log(""); 
-
-        console.log("categoriesById:");     // make this easily available 
-        const categoriesById = Site.categoriesById;
-        console.log(categoriesById);
-        console.log("");
-
         var blnIsCategory = false;
         var blnIsTopic = false;
         var blnIsGroup = false; 
@@ -416,7 +417,7 @@ learn about loadscript
             */
 
 
-            // CAN I GET THAT VALUE USING EMBER (AVOID A CALL, AND USE APP BETTER)
+            // GET CATEGORY INFO USING EMBER (AND NEXT, DO SOMETHING WITH IT)
 
             const topicController = api.container.lookup("controller:topic");
             
@@ -436,7 +437,6 @@ learn about loadscript
                     const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
                     console.log(thisTopicCategoryKInfo);
                     console.log("");
-
 
 
                 }
