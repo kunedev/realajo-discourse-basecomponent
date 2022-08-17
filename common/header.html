@@ -300,22 +300,13 @@
   
             // TODO:  DECIDE WHAT WE WANT TO DO WITH HOMEPAGE 
 
-            document.getElementById('k-discovery-list-controls-above').innerHTML = "";     // emptying it because it may have been set by Category page. 
-            document.getElementById('k-discovery-list-container-top').innerHTML = "";     // emptying it because it may have been set by Category page. 
-            // reset other shared fields also 
-            // no need to reset where they are set by a subsequent line below 
-
+            // empty out fields that may have been set by Category page.   TODO:   check for efficiency & completeness.  
+            $('#k-discovery-list-container-top').html("");   
             $('#k-discovery-list-controls-above').html( url + " Homepage type: " + strHomepageView);        // Set Div Content 
                           
 
       } else if (blnIsTopic) {
            
-            // prove that we can access & use the Custom Topic field. 
-            var kCustomTopicField = document.getElementsByClassName('topic-title-custom-field-container')[0];
-            var kTargetTopicField = document.getElementById('k-topic-above-suggested');
-            kTargetTopicField.innerHTML = kCustomTopicField.innerHTML;  // test .. apply content of custom field to another text holder
-
-            // NEXT, GET CURRENT TOPIC INFO .. ESPECIALLY GET CATEGORYID AND KTOPICINFO FOR CURRENT TOPIC 
 
                  // NOTE HOW EASY THE $.getJSON FUNCTION IS TO CALL .. LOOKS LIKE A GREAT WAY TO BUILD MY AJAX FUNCTIONS 
                  
@@ -327,12 +318,12 @@
                     });
                 */
 
-            // GET CATEGORY INFO USING EMBER (AND NEXT, DO SOMETHING WITH IT)
+            // GET CATEGORY INFO USING EMBER (AND DO SOMETHING WITH IT)
 
             const topicController = api.container.lookup("controller:topic");
             
             if (topicController) {
-                const thisTopic = topicController.get("model");
+                const thisTopic = topicController.get("model");         // the current topic is loaded into the model. 
 
                 if (thisTopic) {
 
@@ -342,6 +333,7 @@
                     console.log(thisTopic.category.name);
 
                     const thisTopicKInfo = thisTopic.ktopicinfo;    // Kune info for topic 
+                    if (thisTopicKInfo == null) { let thisTopicKInfo = "(no Topic Custom-Content Available)" };     // todo: improve how we manage this 
 
                     console.log("Lookup/Indepth Category Info for Current Topic ");
                     const thisTopicCategory = categoriesById[thisTopic.category.id]; 
@@ -349,12 +341,16 @@
                     console.log(thisTopicCategory);
                     console.log("thisTopicCategory kcategoryinfo");
                     const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
+
+                     if (thisTopicCategoryKInfo == null) { let thisTopicCategoryKInfo = "(no TopicCategory Custom-Content Available)" };  // todo: improve how we manage this.
+
                     console.log(thisTopicCategoryKInfo);
                     console.log("next, set the sidebar");
  
-                     // in practice will want to assemble this & also incorporate elements of thisTopicCategoryKInfo
+                    //NEXT, USE THE TOPIC INFO AND CATEGORY INFO TO SET FIELD VALUES. 
+                     // in practice will want to BLEND elements of both..  approach to be determined. 
                     $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
-                    $('#k-after-topic-footer-buttons').html('(Setting this also)<br>' + thisTopicKInfo);      // write html into that div 
+                    $('#k-after-topic-footer-buttons').html(thisTopicKInfo + "<BR>"+ thisTopicCategoryKInfo);      // write html into that div 
                     
                 }
             }
