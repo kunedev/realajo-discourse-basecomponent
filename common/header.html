@@ -10,12 +10,14 @@
 
 
 	<script>		
+    
         var kSettingsDivReader = document.getElementById('kSettings');		
 		const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
 
 		const kSettingsJSON = JSON.parse(kSettingsJS);
 		console.log("Community Ref: " + kSettingsJSON.CommunityRef);
 		console.log("OtherSettingsArray[2].name  (js) : " + kSettingsJSON.OtherSettingArray[2].name);
+
 	</script>
 
 
