@@ -108,7 +108,10 @@ background-color: ghostwhite !important;
     font-weight: bold;
   } 
   
-  
+  .bootstrap-mode-notice{
+    display: none !important;
+    visibility: hidden !important;
+  }
   
   /* import the cookie-content standard css.  (later, move at least a backup of this to empowercdn) */       
   @import url("https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"); 
