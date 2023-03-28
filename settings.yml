@@ -5,7 +5,7 @@ kcommunity:
     en: "Maintained only as an illustration. Switching to using JSON in the Header Div, instead."
 
 # settings.yml - update CSP
-extend_content_security_policy:
+extend_content_security_policy_script_src:
   type: list
-  default: "script_src: https://empowercdn.com|script_src: https://kune.co|script_src: https://flow.kune.co|script_src: https://myflow.kune.co"
+  default: "https://empowercdn.com|https://kune.co|https://flow.kune.co|https://myflow.kune.co"
  
