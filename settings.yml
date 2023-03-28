@@ -3,3 +3,9 @@ kcommunity:
   textarea: false
   description:
     en: "Maintained only as an illustration. Switching to using JSON in the Header Div, instead."
+
+# settings.yml - update CSP
+extend_content_security_policy:
+  type: list
+  default: "script_src: https://empowercdn.com|script_src: https://kune.co|script_src: https://flow.kune.co|script_src: https://myflow.kune.co"
+ 
