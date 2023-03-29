@@ -9,7 +9,7 @@
 <!--    WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION).  	This is kSettingsDivreader code is demo/starter code, only. 
 A) READING SETTINGS THAT ARE SET VIA HEADER ON MAIN THEME   
 B) ASSIGNING THIS TO VARIABLE IN JS 
-C) REUSING THAT VARIABLES LATER IN JS  AND DISCOUSE/TEXT  		
+C) REUSING THAT VARIABLES LATER IN JS  AND DISCOURSE/TEXT  		
 Note, I may not use kSettings in this way .. it may make more sense to use Ajax to get settings .. but, this has the advantage of being fast and always running before the next block of code 
 --> 
 
@@ -260,7 +260,8 @@ var kSettingsDivReader = document.getElementById('kSettings');
             $('#k-discovery-list-container-top').html(thisCategoryKInfo);   
             $('#k-discovery-list-controls-above').html("");        // Set Div Content 
 
-          ExecuteSmartDOM(strPageType);
+          ExecuteSmartDOM(strPageType,thisCategory,0,thisCategoryKInfo,0,0);
+	  
 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
@@ -270,7 +271,7 @@ var kSettingsDivReader = document.getElementById('kSettings');
             $('#k-discovery-list-container-top').html("");   
             $('#k-discovery-list-controls-above').html( url + " Homepage type: " + strHomepageView);        // Set Div Content 
                           
-           ExecuteSmartDOM(strPageType);
+           ExecuteSmartDOM(strPageType,0,0,0,0,0);
 
 
       } else if (blnIsTopic) {
@@ -290,7 +291,10 @@ var kSettingsDivReader = document.getElementById('kSettings');
                     console.log(thisTopic);
                     console.log(thisTopic.category.id);
                     console.log(thisTopic.category.name);
-
+		    
+		    var thisTopicRemoteID = thisTopic.remote_id		// may not work 
+ 		    console.log(thisTopicRemoteID);
+		    
                     const thisTopicKInfo = thisTopic.ktopicinfo;    // Kune info for topic 
                  //   if (thisTopicKInfo == null) { let thisTopicKInfo = "(no Topic Custom-Content Available)" };     // todo: improve how we manage this 
 
@@ -299,30 +303,23 @@ var kSettingsDivReader = document.getElementById('kSettings');
 
                     console.log(thisTopicCategory);
                     console.log("thisTopicCategory kcategoryinfo");
-                    const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
+                    var thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
 
-                 //    if (thisTopicCategoryKInfo == null) { let thisTopicCategoryKInfo = "(no TopicCategory Custom-Content Available)" };  // todo: improve how we manage this.
+                    if (thisTopicCategoryKInfo == null) { let thisTopicCategoryKInfo = 0 }; 
 
                     console.log(thisTopicCategoryKInfo);
                     console.log("next, set the sidebar");
- 
-                    //NEXT, USE THE TOPIC INFO AND CATEGORY INFO TO SET FIELD VALUES. 
-                     // in practice will want to BLEND elements of both..  approach to be determined. 
-                    $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
-                    $('#k-after-topic-footer-buttons').html(thisTopicKInfo + "<BR>"+ thisTopicCategoryKInfo);      // write html into that div 
 
-                ExecuteSmartDOM(strPageType);
+                ExecuteSmartDOM(strPageType,thisTopicID,0,thisTopicKInfo,thisTopic.category.id,thisTopicCategoryKInfo);
 
-
-                }
+}
             }
 
       } else if (blnIsGroup) {    // currently not being set as true at all 
               strPageType = "g";
               $('#k-group-reports-nav-item').html(thisGroupName);    
 
-              // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
-              ExecuteSmartDOM(strPageType);
+              ExecuteSmartDOM(strPageType,0,0,0,0,0);
 
               
       } else {    // some other page
