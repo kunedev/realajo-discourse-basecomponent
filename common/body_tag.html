@@ -2,42 +2,10 @@
 <!-- mmenu placeholder -->
 <div id='leftsidemmenu' style='display:none'>  	</div>
 
-
 <!-- mmenu CONTENT  #TODO: see notes below re the fact that these 2 are required for nav menu but break the "sticky" functionality -->
-<script src="https://empowercdn.com/include/discourse-wecanireland-mmenu.js?version=00013"></script>     
-
-<!-- mmenu SCRIPT  #TODO: see notes below re the fact that these 2 are required for nav menu but break the "sticky" functionality -->
-<script src="https://empowercdn.com/cdn/shared/menus/mmenu-js-master/js/mmenu.js?version=001"></script>          
-
-
-<!-- utility js -->
-<script src="https://empowercdn.com/include/discourse-utilityscripts.js?version=00003"></script>
+<script src="https://web.kune.co/prod/kwebui/js/mmenu-activation.js"></script>     
+<script src="https://web.kune.co/prod/libs/other/mmenu.js?version=001"></script>          
 
 <!-- cookie consent -->
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-<script src="https://empowercdn.com/include/cookieconsent-popup.js?version=00007"></script>
-
-
-<!--  
-    
-    see "c:\temp\new 21.txt" on my laptop for some debugging notes. 
-    
-    ANALYSIS: 
-
-		THE 2 X JS FILES ARE NEEDED FOR MMENU TO WORK AND FOR TOP MENU TO WORK.  JQUERY ALSO NEEDED. 
-
-		EITHER OF THE 2 X JS FILES SEEMS TO BREAK THE STICKY BEHAVIOUR, THO. 
-
-			THE SOLUTION HERE:  KEEP JQUERY AND MMENU.  FIX THE "STICKY" BEHAVIOUR ISSUE LATER, IGNORE FOR NOW. 
-		
-		THE FILTER BEHAVIOUR FOR SETTINGS IS DRIVEN BY CUSTOM SETTINGS PLUGINS (MAY BE LINKED TO THE ABSENCE OF A DESCRIPTION?) 
-		
-			THE SOLUTION: IGNORE FOR NOW, IT SEEMS TO BE LIMITED TO JUST THIS SINGLE NON-CRITICAL PROBLEM 
-			
-    -> Minor issue / MMenu CSS (demo) breaks Reports page (and probably elsewhere). 
-        
-        todo: fix with custom CSS. 
-
-
-
--->
+<script src="https://web.kune.co/prod/libs/other/cookiecontent.min.js" data-cfasync="false"></script>
+<script src="https://web.kune.co/prod/libs/other/kunecookiecontentmsg.js"></script>
