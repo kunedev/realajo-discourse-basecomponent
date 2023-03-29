@@ -166,41 +166,9 @@ var kSettingsDivReader = document.getElementById('kSettings');
             title = siteSettings.title;
             */
 
-           api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
-   
-    /*      EXPERIMENTAL ..  A FUNCTION THAT PUTS ALL THE CONTENT INTO THE RIGHT PLACE, AND CAN ACCESS BOTH THE DOM AND THE EMBER OBJECTS.  */
-
-    /*
-    Function BuildSmartContent(pgType){         // note, this gives us a way of abstracting out the logic while still keeping access to Ember controllers etc. 
-                                                // this function may not be ultra-heavily used .. but it gives us a way to (FIRSTLY) process content using both DOM and Ember 
-
-            alert ("running BuildSmartContent" + pgType);
-
-            
-                if (pgType = "c"){  // category  
-
-                }
-                else if (pgType = "t"){  // topic 
-                    
-                }
-                else if (pgType = "g"){  // group 
-                    
-                }
-                else if (pgType = "h"){  // homepage 
-                    
-                }
-
-            
-
-            // it's likely that we will have a loop, or some recursion, or both .. lets see what is needed 
-
-            // when finished with processing within Ember, now (SECONDLY) execute JS logic that pulls in external AJAX calls or other, wider, non-Discourse-specific content 
-            ExecuteSmartDOM(pgType);  // when done, call function within external JS script that scans the DOM and does everything it needs to do, to 
-
-        }
+      //      api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
     
-    */
-
+    
     /* ----------------  NEXT - CRITICAL SECTION .. THIS RUNS EVERY TIME WE NAVIGATE FROM PAGE TO PAGE WITHIN DISCOURSE     ------------ */
 
     api.onPageChange((url, title) => {      // this runs dynamically every time we switch page wihtin Discourse. 
@@ -275,7 +243,6 @@ var kSettingsDivReader = document.getElementById('kSettings');
   
       // ---------- end of other pagetype checks  ------------
     
-     
       if (blnIsCategory) {
           
             strPageType = "c";
@@ -293,36 +260,22 @@ var kSettingsDivReader = document.getElementById('kSettings');
             $('#k-discovery-list-container-top').html(thisCategoryKInfo);   
             $('#k-discovery-list-controls-above').html("");        // Set Div Content 
 
-          //  BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
-	  
           ExecuteSmartDOM(strPageType);
 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
   
             strPageType = "h";
-            // TODO:  DECIDE WHAT WE WANT TO DO WITH HOMEPAGE 
-
+	    
             // empty out fields that may have been set by Category page.   TODO:   check for efficiency & completeness.  
             $('#k-discovery-list-container-top').html("");   
             $('#k-discovery-list-controls-above').html( url + " Homepage type: " + strHomepageView);        // Set Div Content 
                           
-           // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
            ExecuteSmartDOM(strPageType);
 
 
       } else if (blnIsTopic) {
            
             strPageType = "t";
-
-                 // NOTE HOW EASY THE $.getJSON FUNCTION IS TO CALL .. LOOKS LIKE A GREAT WAY TO BUILD MY AJAX FUNCTIONS 
-                 
-                /*      THIS WORKS BUT IT REQUIRES AN EXTRA CALL, I THINK 
-                $.getJSON(window.location.href + '.json', function (data) {         // good that it's async. 
-                    const pagejson = data;
-                    const topicCategoryId = pagejson.category_id;
-                    console.log(topicCategoryId);
-                    });
-                */
 
             // GET CATEGORY INFO USING EMBER (AND DO SOMETHING WITH IT)
 
@@ -358,7 +311,6 @@ var kSettingsDivReader = document.getElementById('kSettings');
                     $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
                     $('#k-after-topic-footer-buttons').html(thisTopicKInfo + "<BR>"+ thisTopicCategoryKInfo);      // write html into that div 
 
-                //BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
                 ExecuteSmartDOM(strPageType);
 
 
