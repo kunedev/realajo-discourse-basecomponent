@@ -1,41 +1,30 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
-
-<!--    WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) 
-
-        A) READING SETTINGS THAT ARE SET VIA HEADER ON MAIN THEME   
-        B) ASSIGNING THIS TO VARIABLE IN JS 
-        C) REUSING THAT VARIABLES LATER IN JS  AND DISCOUSE/TEXT  				--> 
+<script src="https://empowercdn.com/kweb/js/kgeneralutils.js?v=000009"></script>  <!--  probably add to other js files --> 
 
 
-	<script>		
-    
-        var kSettingsDivReader = document.getElementById('kSettings');		
-		const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
+<!--    WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION).  	This is kSettingsDivreader code is demo/starter code, only. 
+A) READING SETTINGS THAT ARE SET VIA HEADER ON MAIN THEME   
+B) ASSIGNING THIS TO VARIABLE IN JS 
+C) REUSING THAT VARIABLES LATER IN JS  AND DISCOUSE/TEXT  		
+Note, I may not use kSettings in this way .. it may make more sense to use Ajax to get settings .. but, this has the advantage of being fast and always running before the next block of code 
+--> 
 
-		const kSettingsJSON = JSON.parse(kSettingsJS);
-		console.log("Community Ref: " + kSettingsJSON.CommunityRef);
-		console.log("OtherSettingsArray[2].name  (js) : " + kSettingsJSON.OtherSettingArray[2].name);
-
-	</script>
-
-
-<script src="https://empowercdn.com/kweb/js/kgeneralutils.js?v=000009"></script>  <!--  testing / can we run functions from here? --> 
-
+<script>		
+var kSettingsDivReader = document.getElementById('kSettings');		
+	const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
+	const kSettingsJSON = JSON.parse(kSettingsJS);
+	console.log("Community Ref: " + kSettingsJSON.CommunityRef);
+	console.log("OtherSettingsArray[2].name  (js) : " + kSettingsJSON.OtherSettingArray[2].name);
+</script>
 <!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
 
-<!-- top menu placeholder NB NB  removed for now    -->
-<div id="topmenubar" class = "navbar-collapse wrap">    </div>    
-
-<!-- top of page content content   NB NB  removed for now     -->
-
-<script src="https://empowercdn.com/include/discourse-wecanireland-topmenubar.js?version=00040"></script>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<!-- content placeholder .. name may need to be refined-->
+<div id="verytopofpage">    </div>    
 
 
-<!------------------------  THIS BLOCK MAKES KUNE DIVS AVAILABLE TO JS          --------------------------------->
+<!------------------------  NEXT BLOCK MAKES KUNE DIVS AVAILABLE TO JS          --------------------------------->
 
 <script type='text/x-handlebars' data-template-name='/connectors/above-site-header/kune-config'>
     <div id='k-above-site-header'></div>
@@ -143,7 +132,7 @@
 
         // console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));   // TODO: WORK OUT WHETHER THIS H FUNCTION HELPS ME? 
  
-      //  function SayHello2(){  alert("Hello 2  (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
+        function SayHello2(){  alert("Hello 2  (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
 
         var kSettingsDivReaderDS = document.getElementById('kSettings');		
 		const kSettingsDS = kSettingsDivReaderDS.innerHTML;       // demo of how to retrieve custom settings. 
@@ -160,13 +149,13 @@
         console.log(siteSettings);
         console.log("Site:");
         const Site = api.container.lookup("service:site");
-        console.log(Site);
+        //  console.log(Site);
         console.log("currentUser:");
         const currentUser =  api.getCurrentUser();
-        console.log(currentUser);
+        //  console.log(currentUser);
         console.log("categoriesById:");     // make this easily available 
         const categoriesById = Site.categoriesById;
-        console.log(categoriesById);
+        //  console.log(categoriesById);
         const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings, ie as defined in the Theme Head Section.
         console.log("kcommunity : " + kCommunity);
         
@@ -175,7 +164,7 @@
             title = siteSettings.title;
             */
 
-            //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
+           api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
    
     /*      EXPERIMENTAL ..  A FUNCTION THAT PUTS ALL THE CONTENT INTO THE RIGHT PLACE, AND CAN ACCESS BOTH THE DOM AND THE EMBER OBJECTS.  */
 
@@ -284,10 +273,7 @@
   
       // ---------- end of other pagetype checks  ------------
     
-      // will need some clever function that loops 
-
-
-
+     
       if (blnIsCategory) {
           
             strPageType = "c";
@@ -306,6 +292,7 @@
             $('#k-discovery-list-controls-above').html("");        // Set Div Content 
 
           //  BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
+	  
           ExecuteSmartDOM(strPageType);
 
       } else if (blnIsHomepage) {      //  NB this is closely related to 
