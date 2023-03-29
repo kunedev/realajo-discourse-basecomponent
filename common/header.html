@@ -8,22 +8,24 @@
         B) ASSIGNING THIS TO VARIABLE IN JS 
         C) REUSING THAT VARIABLES LATER IN JS  AND DISCOUSE/TEXT  				--> 
 
+<script>		
 
-	<script>		
-    
-        var kSettingsDivReader = document.getElementById('kSettings');		
-		const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
+var kSettingsDivReader = document.getElementById('kSettings');		
+	const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
 
-		const kSettingsJSON = JSON.parse(kSettingsJS);
-		console.log("Community Ref: " + kSettingsJSON.CommunityRef);
-		console.log("OtherSettingsArray[2].name  (js) : " + kSettingsJSON.OtherSettingArray[2].name);
+	const kSettingsJSON = JSON.parse(kSettingsJS);
+	console.log("Community Ref: " + kSettingsJSON.CommunityRef);
+	console.log("OtherSettingsArray[2].name  (js) : " + kSettingsJSON.OtherSettingArray[2].name);
 
-	</script>
+</script>
 
 
 <script src="https://empowercdn.com/kweb/js/kgeneralutils.js?v=000009"></script>  <!--  testing / can we run functions from here? --> 
 
+
 <!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
+
+
 
 <!-- top menu placeholder NB NB  removed for now    -->
 <div id="topmenubar" class = "navbar-collapse wrap">    </div>    
@@ -134,260 +136,8 @@
 <script type='text/x-handlebars' data-template-name='/connectors/after-d-editor/kune-config'>
     <div id='k-after-d-editor'></div>
 </script>
-
 <!------------------------  END OF MAKING KUNE DIVS AVAILABLE TO JS          --------------------------------->
 
+
 <!--  SCRIPT MANAGING DYNAMIC CONTENT  WITHIN DISCOURSE  (USING DISCOURSE SCRIPT)  -->
-
-<script type="text/discourse-plugin" version="0.8.7">
-
-        // console.log(api.h('b', ['helloOOOOOOOOOOOOOOOOO', 'world']));   // TODO: WORK OUT WHETHER THIS H FUNCTION HELPS ME? 
- 
-      //  function SayHello2(){  alert("Hello 2  (but nb disable inline scripts before release");           }   // UNRELATED, ADDED HERE FOR ILLUSTRATION ONLY. TODO: REMOVE THIS LATER 
-
-        var kSettingsDivReaderDS = document.getElementById('kSettings');		
-		const kSettingsDS = kSettingsDivReaderDS.innerHTML;       // demo of how to retrieve custom settings. 
-
-		const kSettingsDs = JSON.parse(kSettingsDS);    // Kune Settings in JSON format, read within Discourse script 
-		console.log("Community Ref: " + kSettingsDs.CommunityRef);
-		console.log("OtherSettingsArray[2].name : " + kSettingsDs.OtherSettingArray[2].name);
-
-        console.log("Community EntityID (from text/discourse): " + kSettingsDs.EntityID);
-        
-        console.log("");                            // TODO: CHECK LATER SHOULD I BE REFRESHING ON EACH PAGE LOAD? .. SEEMS OTT IF SO
-        console.log("siteSettings:");
-        const siteSettings = api.container.lookup("site-settings:main");
-        console.log(siteSettings);
-        console.log("Site:");
-        const Site = api.container.lookup("service:site");
-        console.log(Site);
-        console.log("currentUser:");
-        const currentUser =  api.getCurrentUser();
-        console.log(currentUser);
-        console.log("categoriesById:");     // make this easily available 
-        const categoriesById = Site.categoriesById;
-        console.log(categoriesById);
-        const kCommunity = settings.kcommunity;       // demo of how to retrieve *custom* settings, ie as defined in the Theme Head Section.
-        console.log("kcommunity : " + kCommunity);
-        
-            /* STANDARD DISCOURSE SETTINGS .. MAINTAINED FOR REFERENCE ONLY 
-            const taggingEnabled = siteSettings.tagging_enabled,     
-            title = siteSettings.title;
-            */
-
-            //  api.decorateCooked($elem => $elem.css({ backgroundColor: '#e9f0ec' }));            // demo call .. may not be needed. 
-   
-    /*      EXPERIMENTAL ..  A FUNCTION THAT PUTS ALL THE CONTENT INTO THE RIGHT PLACE, AND CAN ACCESS BOTH THE DOM AND THE EMBER OBJECTS.  */
-
-    /*
-    Function BuildSmartContent(pgType){         // note, this gives us a way of abstracting out the logic while still keeping access to Ember controllers etc. 
-                                                // this function may not be ultra-heavily used .. but it gives us a way to (FIRSTLY) process content using both DOM and Ember 
-
-            alert ("running BuildSmartContent" + pgType);
-
-            
-                if (pgType = "c"){  // category  
-
-                }
-                else if (pgType = "t"){  // topic 
-                    
-                }
-                else if (pgType = "g"){  // group 
-                    
-                }
-                else if (pgType = "h"){  // homepage 
-                    
-                }
-
-            
-
-            // it's likely that we will have a loop, or some recursion, or both .. lets see what is needed 
-
-            // when finished with processing within Ember, now (SECONDLY) execute JS logic that pulls in external AJAX calls or other, wider, non-Discourse-specific content 
-            ExecuteSmartDOM(pgType);  // when done, call function within external JS script that scans the DOM and does everything it needs to do, to 
-
-        }
-    
-    */
-
-    /* ----------------  NEXT - CRITICAL SECTION .. THIS RUNS EVERY TIME WE NAVIGATE FROM PAGE TO PAGE WITHIN DISCOURSE     ------------ */
-
-    api.onPageChange((url, title) => {      // this runs dynamically every time we switch page wihtin Discourse. 
-
-      console.log('user navigated! ' + url);
-  
-        var blnIsCategory = false;
-        var blnIsTopic = false;
-        var blnIsGroup = false; 
-        var blnIsHomepage = false; 
-        var strHomepageView = "";
-        var strPageType = "";
-        
-      // ---------- homepage check  ------------
-      
-      if (url == "/")   {                // if there's no match for this pattern then there is nothing after the ".com/" (or other tld)
-         blnIsHomepage = true;
-         strHomepageView = "home";
-      }
-      
-      if (url == "/latest") {
-         blnIsHomepage = true;
-         strHomepageView = "latest";
-      }
-      if (url == "/categories") {
-         blnIsHomepage = true;
-         strHomepageView = "categories";
-      }
-      if (url == "/top") {
-         blnIsHomepage = true;
-         strHomepageView = "top";
-      }
-      
-      // ---------- end of homepage check  ------------
-  
-      // ---------- other pagetype checks  ------------
-  
-      var res = url.match(/\/t\/(.*?)\/(\w+)/);       // check for topic id
-      if (res && res[2] > 0) {
-          console.log("topic " + res[2]);
-          var blnIsTopic = true;
-          strPageType = "t";
-          var thisTopicID = res[2];
-      }
-  
-      console.log("about to check url " + url);
-      var res = url.match(/(\/g)\/(\w+)/);      // check for group id
-      if (res !== null) {
-          var blnIsGroup = true;
-          strPageType = "g";
-          var thisGroupName = res[2];
-          console.log("Is group. " + thisGroupName);
-      }
-   
-      var res = url.match(/\/c\/(.*?)\/(\d+)/);       // category page check: check for category id position 2
-      if (res && res[2] > 0) {
-          var blnIsCategory = true;
-          var thisCategoryID = res[2];
-      }
-   
-      var res = url.match(/\/c\/(.*?)\/(\w+)\/(\d+)/);       // category page check:  check for category id  position 3
-      if (res && res[3] > 0) {
-          var blnIsCategory = true;
-          var thisCategoryID = res[3];
-      }
-  
-      var res = url.match(/\/c\/(.*?)\/(\w+)\/(\w+)\/(\d+)/);       // category page check:  check for category id  position 4
-      if (res && res[4] > 0) {
-          var blnIsCategory = true;
-          var thisCategoryID = res[4];
-      }
-  
-      // ---------- end of other pagetype checks  ------------
-    
-      // will need some clever function that loops 
-
-
-
-      if (blnIsCategory) {
-          
-            strPageType = "c";
-            console.log("category " + thisCategoryID);    
-
-            console.log("thisCategory for Current Category ID ");
-            const thisCategory = categoriesById[thisCategoryID]; 
-            console.log(thisCategory);
-            console.log("thisCategory CategoryInfo");
-            const thisCategoryKInfo = thisCategory.kcategoryinfo;
-            console.log(thisCategoryKInfo);
-            console.log("");
-
-            //  TODO:   Implement something smart.  
-            $('#k-discovery-list-container-top').html(thisCategoryKInfo);   
-            $('#k-discovery-list-controls-above').html("");        // Set Div Content 
-
-          //  BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
-          ExecuteSmartDOM(strPageType);
-
-      } else if (blnIsHomepage) {      //  NB this is closely related to 
-  
-            strPageType = "h";
-            // TODO:  DECIDE WHAT WE WANT TO DO WITH HOMEPAGE 
-
-            // empty out fields that may have been set by Category page.   TODO:   check for efficiency & completeness.  
-            $('#k-discovery-list-container-top').html("");   
-            $('#k-discovery-list-controls-above').html( url + " Homepage type: " + strHomepageView);        // Set Div Content 
-                          
-           // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
-           ExecuteSmartDOM(strPageType);
-
-
-      } else if (blnIsTopic) {
-           
-            strPageType = "t";
-
-                 // NOTE HOW EASY THE $.getJSON FUNCTION IS TO CALL .. LOOKS LIKE A GREAT WAY TO BUILD MY AJAX FUNCTIONS 
-                 
-                /*      THIS WORKS BUT IT REQUIRES AN EXTRA CALL, I THINK 
-                $.getJSON(window.location.href + '.json', function (data) {         // good that it's async. 
-                    const pagejson = data;
-                    const topicCategoryId = pagejson.category_id;
-                    console.log(topicCategoryId);
-                    });
-                */
-
-            // GET CATEGORY INFO USING EMBER (AND DO SOMETHING WITH IT)
-
-            const topicController = api.container.lookup("controller:topic");
-            
-            if (topicController) {
-                const thisTopic = topicController.get("model");         // the current topic is loaded into the model. 
-
-                if (thisTopic) {
-
-                    console.log("Category Info for Current Topic");
-                    console.log(thisTopic);
-                    console.log(thisTopic.category.id);
-                    console.log(thisTopic.category.name);
-
-                    const thisTopicKInfo = thisTopic.ktopicinfo;    // Kune info for topic 
-                 //   if (thisTopicKInfo == null) { let thisTopicKInfo = "(no Topic Custom-Content Available)" };     // todo: improve how we manage this 
-
-                    console.log("Lookup/Indepth Category Info for Current Topic ");
-                    const thisTopicCategory = categoriesById[thisTopic.category.id]; 
-
-                    console.log(thisTopicCategory);
-                    console.log("thisTopicCategory kcategoryinfo");
-                    const thisTopicCategoryKInfo = thisTopicCategory.kcategoryinfo;
-
-                 //    if (thisTopicCategoryKInfo == null) { let thisTopicCategoryKInfo = "(no TopicCategory Custom-Content Available)" };  // todo: improve how we manage this.
-
-                    console.log(thisTopicCategoryKInfo);
-                    console.log("next, set the sidebar");
- 
-                    //NEXT, USE THE TOPIC INFO AND CATEGORY INFO TO SET FIELD VALUES. 
-                     // in practice will want to BLEND elements of both..  approach to be determined. 
-                    $('#ksidebardiv').html(thisTopicKInfo);                                                            // write html into that div 
-                    $('#k-after-topic-footer-buttons').html(thisTopicKInfo + "<BR>"+ thisTopicCategoryKInfo);      // write html into that div 
-
-                //BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
-                ExecuteSmartDOM(strPageType);
-
-
-                }
-            }
-
-      } else if (blnIsGroup) {    // currently not being set as true at all 
-              strPageType = "g";
-              $('#k-group-reports-nav-item').html(thisGroupName);    
-
-              // BuildSmartContent(strPageType); // first level of "smart" processing (Ember and DOM), that in turn calls the 2nd level (DOM-only)
-              ExecuteSmartDOM(strPageType);
-
-              
-      } else {    // some other page
-          
-      }
-   
-    })
-  
-   </script> 
+<script src="https://web.kune.co/prod/kwebui/js/discourse-specifictype-script.js" type="text/discourse-plugin" version="0.1.0">   </script> 
