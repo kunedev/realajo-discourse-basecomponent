@@ -294,8 +294,8 @@ var kSettingsDivReader = document.getElementById('kSettings');
                     console.log(thisTopic.category.name);
 		    
 		    console.log("Topic Remote ID:");
-		    var thisTopicRemoteID = thisTopic.remote_id;	// may not work 
- 		    console.log(thisTopicRemoteID);
+		    var thisTopicExternal_ID = thisTopic.external_id;	// may not work 
+ 		    console.log(thisTopicExternal_ID);
 		    
                     const thisTopicKInfo = thisTopic.ktopicinfo;    // Kune info for topic 
                  //   if (thisTopicKInfo == null) { let thisTopicKInfo = "(no Topic Custom-Content Available)" };     // todo: improve how we manage this 
@@ -312,7 +312,7 @@ var kSettingsDivReader = document.getElementById('kSettings');
                     console.log(thisTopicCategoryKInfo);
                     console.log("next, set the sidebar");
 
-                ExecuteSmartDOM(strPageType,thisTopicID,0,thisTopicKInfo,thisTopic.category.id,thisTopicCategoryKInfo);
+                ExecuteSmartDOM(strPageType,thisTopicID,thisTopicExternal_ID,thisTopicKInfo,thisTopic.category.id,thisTopicCategoryKInfo);
 
 }
             }
