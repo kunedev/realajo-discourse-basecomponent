@@ -294,13 +294,17 @@ var kSettingsDivReader = document.getElementById('kSettings');
                     console.log(thisTopic.category.name);
 		    
 		    console.log("Topic External_ID:");
-		    var thisTopicExternal_ID = thisTopic.external_id;	// may not work 
- 		    console.log(thisTopicExternal_ID);
+		    var thisTopicExternal_ID = 0;	// sets a default of zero
+ 		    
+                    if (thisTopic.hasOwnProperty('external_id')) {     // only exists if a value has been set 
+                        thisTopicExternal_ID = thisTopic.external_id;
+                    }
 		    
+             	    console.log(thisTopicExternal_ID);  // will be zero, or the specific value. 
+			
                     const thisTopicKInfo = thisTopic.ktopicinfo;    // Kune info for topic 
-                 //   if (thisTopicKInfo == null) { let thisTopicKInfo = "(no Topic Custom-Content Available)" };     // todo: improve how we manage this 
 
-                    console.log("Lookup/Indepth Category Info for Current Topic ");
+		    console.log("Lookup/Indepth Category Info for Current Topic ");
                     const thisTopicCategory = categoriesById[thisTopic.category.id]; 
 
                     console.log(thisTopicCategory);
