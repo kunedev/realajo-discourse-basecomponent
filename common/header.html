@@ -1,28 +1,18 @@
 
 <link rel="stylesheet" href="https://web.kune.co/prod/kwebui/css/discourse-legacystyling.css">
-<!--  currently breaking Discourse styling a little .. lets see how we fix it  <link rel="stylesheet" href="https://web.kune.co/prod/kwebui/css/kuneresponsivemenu.css">
---> 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!--  testing / does it fix issues? --> 
 
-<script src="https://web.kune.co/prod/kwebui/js/discourse-custom-behaviour.js"></script>  
+<link rel="stylesheet" href="https://web.kune.co/dev/kwebui-dev/rw/kui-layouts/kui-shared.css">		<!-- move from /kwebui-dev/ later --> 
+<link rel="stylesheet" href="https://web.kune.co/dev/kwebui-dev/rw/kui-layouts/kui-onlyDiscourse.css">	<!-- move from /kwebui-dev/ later --> 
 
-<!--    WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION).  --> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
 
-<script>		
-var kSettingsDivReader = document.getElementById('kConfig');		
-	const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
-	const kSettingsJSON = JSON.parse(kSettingsJS);
-	console.log("Community Ref: " + kSettingsJSON.CommunityRef);
-</script>
+<script src="https://web.kune.co/prod/kwebui/js/discourse-custom-behaviour.js"></script>  	<!-- not sure if we need this, maybe merge to kui-only-discourse --> 
+<script src="https://web.kune.co/dev/kwebui-dev/rw/kui-layouts/kui-onlyDiscourse.js"></script>  	<!-- move from /kwebui-dev/ later --> 
+<script src="https://web.kune.co/dev/kwebui-dev/rw/kui-layouts/kui-shared.js"></script>  	<!-- move from /kwebui-dev/ later --> 
 
-<!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
-
-
-<!-- content placeholder .. name may need to be refined-->
 <div id="verytopofpage">    </div>    
 
-
-<!------------------------  NEXT BLOCK MAKES KUNE DIVS AVAILABLE TO JS          --------------------------------->
+<!--     NEXT BLOCK INSERTS KUNE DIVS INTO DISCOURSE PLUGIN SLOTS, FOR CONVENIENT USE VIA JS -->
 
 <script type='text/x-handlebars' data-template-name='/connectors/above-site-header/kune-config'>
     <div id='k-above-site-header'></div>
