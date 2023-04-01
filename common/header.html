@@ -6,21 +6,17 @@
 
 <script src="https://web.kune.co/prod/kwebui/js/discourse-custom-behaviour.js"></script>  
 
-<!--    WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION).  	This is kSettingsDivreader code is demo/starter code, only. 
-A) READING SETTINGS THAT ARE SET VIA HEADER ON MAIN THEME   
-B) ASSIGNING THIS TO VARIABLE IN JS 
-C) REUSING THAT VARIABLES LATER IN JS  AND DISCOURSE/TEXT  		
-Note, I may not use kSettings in this way .. it may make more sense to use Ajax to get settings .. but, this has the advantage of being fast and always running before the next block of code 
---> 
+<!--    WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION).  --> 
 
 <script>		
-var kSettingsDivReader = document.getElementById('kSettings');		
+var kSettingsDivReader = document.getElementById('kConfig');		
 	const kSettingsJS = kSettingsDivReader.innerHTML;       // demo of how to retrieve custom settings. 
 	const kSettingsJSON = JSON.parse(kSettingsJS);
 	console.log("Community Ref: " + kSettingsJSON.CommunityRef);
-	console.log("OtherSettingsArray[2].name  (js) : " + kSettingsJSON.OtherSettingArray[2].name);
 </script>
+
 <!--   END OF WORKING WITH SITE-LEVEL SETTINGS (AS DEFINED IN THEME HEAD SECTION) --> 
+
 
 <!-- content placeholder .. name may need to be refined-->
 <div id="verytopofpage">    </div>    
