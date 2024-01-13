@@ -1,3 +1,3 @@
 
-# name: kune-discourse-basecomponent
+# name: realajo-discourse-basecomponent
 

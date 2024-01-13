@@ -11,5 +11,16 @@ NB Disabled for now.
 
 
 <!-- cookie consent -->
+
 <script src="https://web.kune.co/prod/libs/other/cookiecontent.min.js" data-cfasync="false"></script>
-<script src="https://web.kune.co/prod/kwebui/js/kunecookiecontentmsg.js"></script>
+<script src="https://web.kune.co/prod/realajo/jsscripts-discourse/cookiecontentmessage.js"></script>
+
+
+<!--  HELPER FUNCTIONS TO WORK WITH THE API INTERFACE SCRIPT.  WILL SEE WHETHER NEEDED  (WE WILL PROBABLY MOVE THIS INTO VUE3)  -->
+<script type="text/javascript" src="https://web.kune.co/prod/realajo/jsscripts-discourse/realajo-discourse-jsfunctions.js"></script>
+
+
+<!--  API INTERFACE SCRIPT LISTENING TO DISCOURSE JS API EVENTS AND RAISING THEM TO COMMONJS AND VUE3
+      NB NOTE SCRIPT TYPE.. IT WON'T WORK WITHOUT THIS. -->
+<script type="text/discourse-plugin" src="https://web.kune.co/prod/realajo/jsscripts-discourse/realajo-discourse-apiinterface.js" version="0.8.7"></script> 
+
