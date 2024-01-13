@@ -1,5 +1,5 @@
 
-This component is (c) 2022 Kune Network Ltd.
+This component is (c) 2024 Cointelligent Ltd.
  
 The file structure reflects Discourse software and is derived from original work Copyright 2020 by Angus McLeod. 
 (see https://github.com/paviliondev/layouts-custom-html)

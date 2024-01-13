@@ -1,4 +1,4 @@
-kcommunity:
+rcommunity:
   default: ''
   textarea: false
   description:
@@ -7,5 +7,5 @@ kcommunity:
 # settings.yml - update CSP
 extend_content_security_policy_script_src:
   type: list
-  default: "https://empowercdn.com|https://kune.co|https://flow.kune.co|https://myflow.kune.co"
+  default: "https://empowercdn.com|https://kune.co|https://img.kune.co|https://web.kune.co"
  
