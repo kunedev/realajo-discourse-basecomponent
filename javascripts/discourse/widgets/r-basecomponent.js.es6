@@ -6,7 +6,7 @@ let layouts;
 
 try {
   
- // alert("Evidently, I can run any JS I need here.");      // yes this works 
+  alert("Evidently, I can run any JS I need here.");      // yes this works 
  
 } catch(error) {
 
