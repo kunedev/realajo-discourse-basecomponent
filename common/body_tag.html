@@ -169,7 +169,8 @@ try {
           /* ----------------  NEXT - CRITICAL SECTION .. THIS RUNS EVERY TIME WE NAVIGATE FROM PAGE TO PAGE WITHIN DISCOURSE     ------------ */
       
           api.onPageChange((url, title) => {      // this runs dynamically every time we switch page wihtin Discourse. 
-      
+ 
+            
             console.log('user navigated! ' + url);
         
               var blnIsCategory = false;
