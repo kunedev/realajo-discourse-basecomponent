@@ -38,35 +38,35 @@ try {
 
             function ExecuteSmartDOM(pgType, localId, remoteId, strJSON,catId,catJson){         // catId,catJson are only relevant for Topics  (ie, the topic's CategoryID and kCategoryInfo)
 
-            console.log("ExecuteSmartDOM -- making button work for page type " + pgType);
+                  console.log("ExecuteSmartDOM -- making button work for page type " + pgType);
 
-            // call the appropriate page function (and check that its called, and also later what can it access
+                  // call the appropriate page function (and check that its called, and also later what can it access
 
-            if (pgType == "t") {  
-            
-                  CommunityDoSmartTopic(localId, remoteId, strJSON,catId,catJson); }
+                  if (pgType == "t") {  
                   
-            else if (pgType == "c") {
-            
-                  CommunityDoSmartCategory(localId, remoteId, strJSON); }
+                        CommunityDoSmartTopic(localId, remoteId, strJSON,catId,catJson); }
+                        
+                  else if (pgType == "c") {
                   
-            else if (pgType == "g") {
-            
-                  CommunityDoSmartGroup(localId, remoteId, strJSON); }
+                        CommunityDoSmartCategory(localId, remoteId, strJSON); }
+                        
+                  else if (pgType == "g") {
                   
-            else if (pgType == "h") {
-                  CommunityDoSmartHomepage();
-            }
-            
+                        CommunityDoSmartGroup(localId, remoteId, strJSON); }
+                        
+                  else if (pgType == "h") {
+                        CommunityDoSmartHomepage();
+                  }
+                  
 
-            // refine this later based on DynamicUI ideas
-            document.querySelectorAll('.ButtonX').forEach(function(obj) {
-                  obj.addEventListener('click', SayHello);
-            });
-            
-            // const el = document.getElementById('TheButton');
-            // if (el !== null) {
-            //     el.addEventListener('click', SayHello); 
+                  // refine this later based on DynamicUI ideas
+                  document.querySelectorAll('.ButtonX').forEach(function(obj) {
+                        obj.addEventListener('click', SayHello);
+                  });
+                  
+                  // const el = document.getElementById('TheButton');
+                  // if (el !== null) {
+                  //     el.addEventListener('click', SayHello); 
 
 
             }
@@ -108,8 +108,6 @@ try {
             }
 
 </script>
-
-"use strict";
 
 <script type="text/discourse-plugin" version="0.8">
 
