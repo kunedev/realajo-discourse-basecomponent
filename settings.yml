@@ -5,7 +5,6 @@ rcommunity:
     en: "Maintained only as an illustration. Switching to using JSON in the Header Div, instead."
 
 # settings.yml - update CSP
-extend_content_security_policy_script_src:
+extend_content_security_policy:
   type: list
-  default: "https://empowercdn.com|https://kune.co|https://img.kune.co|https://web.kune.co"
- 
+  default: "script_src: https://empowercdn.com|script_src: https://kune.co|script_src: https://img.kune.co|script_src: https://web.kune.co"
