@@ -22,11 +22,11 @@ NB Disabled for now.
 
 <!--  API INTERFACE SCRIPT LISTENING TO DISCOURSE JS API EVENTS AND RAISING THEM TO COMMONJS AND VUE3
       NB NOTE SCRIPT TYPE.. IT WON'T WORK WITHOUT THIS. -->
-<script type="text/discourse-plugin" src="https://web.kune.co/prod/realajo/jsscripts-discourse/realajo-discourse-apiinterface.js" version="0.8.7"></script> 
+<script type="text/discourse-plugin" src="https://web.kune.co/prod/realajo/jsscripts-discourse/realajo-discourse-apiinterface.js?v=100001"></script> 
 
 <script> 
 try {
-  alert("Check passed:  I can run code from the BODY_TAG section");      // yes this works 
+      console.log("Check passed:  I can run code from the BODY_TAG section");      // yes this works 
 } catch(error) {
   console.error(error);
 }
