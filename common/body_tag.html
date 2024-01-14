@@ -26,10 +26,9 @@ try {
 
 
 <script> 
-             console.log("Now I am setting up the functions that the Discourse scripts can call");
+             console.log("Now I am setting up the functions that the Discourse scripts call");
 
             function SayHello(){  alert("Hello!  .. Lets also make sure we have disabled inline scripts. Only maintaining this to illustrate how to 'activate' a button.");   } 
-
 
             function RGetId(id) {        // just an easy way of retrieving an element by id
             return document.getElementById(id);
@@ -109,6 +108,15 @@ try {
 
 </script>
 
+<script type="text/discourse-plugin" version="0.8.11">
+      (function() {
+        "use strict";
+        a = 5;
+        console.log(a);
+      })();
+    </script>
+
+    
 
 <script type="text/discourse-plugin" version="0.8.11">
       (function() {
